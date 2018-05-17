@@ -1,0 +1,28 @@
+.spinner
+{
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    border-radius: 10px;
+    animation: infinite-spin 2s infinite;
+    
+}
+
+.spinner_hide
+{
+    display:none;
+}
+
+.spinner_show
+{
+    display:block;
+}
+
+@keyframes infinite-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
