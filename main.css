@@ -1,3 +1,167 @@
+html, *
+{
+    box-sizing: border-box;
+    font-size: 25px;
+    font-family: 'Fredericka the Great', cursive;
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    color:#430f6f;
+    justify-content: space-around;
+    background-image: url(img/blue_background1.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+button
+{
+    background-color: transparent;
+    border: none;
+    color:#430f6f;
+    cursor: pointer;
+    transition: font-size 200ms ease-in-out;
+}
+
+button:hover
+{
+    color:#949911; 
+    font-size: 1.2rem; 
+}
+
+button:focus
+{
+    outline-width: 0;
+}
+
+.wrapper
+{
+    flex-basis: 100%;
+    max-width: 500px;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    background: rgba(255, 255, 255, 0.8);
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.menu_wrapper
+{
+    width: 100%;
+    position: relative;
+    height: 3.5rem;
+    padding: 0 1rem 0 1rem;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 0;
+}
+
+.menu_wrapper div
+{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    padding: 0.3rem;
+    background-color: white;
+    box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.7);
+    margin-right: 1rem;
+}
+
+.menu_refresh button
+{
+    margin-top: 0.1rem;
+}
+
+.quotes_wrapper
+{
+    width: 85%;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.single_quote_wrapper
+{
+    position: relative;
+    margin: 1.5rem 0 1.5rem 0;  
+}
+
+.hide_single_quote
+{
+    display: none;
+}
+
+.show_single_quote
+{
+    display: block;
+}
+
+.pinned_quotes_title
+{
+    border-bottom: dashed 1px;
+    padding-bottom: 0.3rem;
+    width: 100%;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.quote_bground
+{
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.7);
+}
+
+.author
+{
+    text-align: right;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.buttons
+{
+    position: absolute;
+}
+
+.buttons button
+{
+    position: absolute;
+    margin-top: 0.4rem;
+    margin-right: 0.3rem;
+}
+
+.buttons button + button
+{
+    left:1.5rem;
+}
+
+
+
+
+
+
+
+
 .spinner
 {
     width: 50px;
@@ -18,11 +182,49 @@
     display:block;
 }
 
-@keyframes infinite-spin {
-    from {
+@keyframes infinite-spin 
+{
+    from 
+    {
       transform: rotate(0deg);
     }
-    to {
+    to 
+    {
       transform: rotate(360deg);
     }
-  }
+}
+
+@media screen and (min-width: 800px) 
+{
+    .menu_wrapper
+    {
+        width: 4rem;
+        height: 10rem;
+        position: absolute;
+        top:0;
+        left:-4rem;
+        padding: 1.5rem 0 1.5rem 0;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    
+    .menu_wrapper div
+    {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 1rem;
+        text-align: center;
+        padding: 0.3rem;
+        background-color: white;
+        box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.9);
+        margin-bottom: 1rem;
+        position: fixed;
+    }
+
+    .menu_wrapper div + div
+    {
+        top:4.5rem;
+    }
+}
