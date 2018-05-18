@@ -16,7 +16,7 @@
                 <button><i class="fa fa-paint-brush fa-sm"></i></button>
             </div>
             <div class="menu_refresh">
-                <button id="reload_button"><i class="fa fa-sm">&#xf021;</i></button>
+                <button id="load_quote"><i class="fa fa-sm">&#xf021;</i></button>
             </div>
         </div>
         <div class="quotes_wrapper">
@@ -25,19 +25,15 @@
                     <div class="quote"></div>
                     <div class="author"></div>
                 </div>
-                <div class="buttons">
-                    <button><i class="fas fa-thumbtack fa-sm" data-fa-transform="rotate-30"></i></button>
-                    <button><i class="fas fa-share-alt fa-sm"></i></button>
+                <div class="buttons" id="current_buttons">
+                    <button id="pin_quote"><i class="fas fa-thumbtack fa-sm" data-fa-transform="rotate-30"></i></button>
+                    <button id="share_quote"><i class="fas fa-share-alt fa-sm"></i></button>
                 </div>
-            </div>
-            <!-- <div class="pinned_quotes_title">
-                Pinned quotes:
-            </div>-->
-            
-                                    
+            </div>                          
         </div>
     </div>
 </body>
 <script src="http://cdn.jsdelivr.net/bluebird/3.4.0/bluebird.min.js"></script>
+<script src="storage.js"></script>
 <script src="main.js"></script>
 </html>

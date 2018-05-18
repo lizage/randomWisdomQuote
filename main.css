@@ -131,13 +131,18 @@ button:focus
     text-align: center;
 }
 
-.quote_bground
+.quote_bground, .pinned_quote_bground
 {
     background-color: white;
     border-radius: 10px;
     padding: 1rem;
     box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.7);
     
+}
+
+.pinned_quote_bground, .pinned_buttons
+{
+    opacity: 0.7;
 }
 
 .author
@@ -161,7 +166,7 @@ button:focus
 
 .buttons button + button
 {
-    left:1.5rem;
+        left:1.5rem;
 }
 
 
