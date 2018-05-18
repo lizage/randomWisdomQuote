@@ -20,6 +20,7 @@ body
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow-x: hidden;
     
 }
 
@@ -41,6 +42,11 @@ button:hover
 button:focus
 {
     outline-width: 0;
+}
+
+.errMsg
+{
+    color:#949911; 
 }
 
 .wrapper
@@ -102,16 +108,18 @@ button:focus
 {
     position: relative;
     margin: 1.5rem 0 1.5rem 0;  
+    width: 100%;
+    transition: opacity 350ms ease-in-out;
 }
 
-.hide_single_quote
+.quote_hide
 {
-    display: none;
+    opacity:0;
 }
 
-.show_single_quote
+.quote_show
 {
-    display: block;
+    opacity:1;
 }
 
 .pinned_quotes_title
@@ -129,6 +137,7 @@ button:focus
     border-radius: 10px;
     padding: 1rem;
     box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.7);
+    
 }
 
 .author
@@ -157,42 +166,149 @@ button:focus
 
 
 
-
-
-
-
-
-.spinner
+.mandala_top
 {
-    width: 50px;
-    height: 50px;
-    background-color: green;
-    border-radius: 10px;
-    animation: infinite-spin 2s infinite;
+    position: absolute;
+    top:-120px;
+    right: -120px;
+    width: 400px;
+    height: 400px;  
+    animation: mandala-spin2 6s linear infinite;
+    opacity:0;
+    transition: opacity 200ms ease-in-out;
     
+}
+
+.mandala_top > div
+{
+    position: absolute;
+    top:200px;
+    left:200px;
+    width: 200px;
+    height:200px;
+    transform-origin: 0 0;
+}
+
+.mandala_top > div + div
+{
+    transform: rotate(51.5deg);
+} 
+
+.mandala_top > div + div +div
+{
+    transform: rotate(103deg);
+} 
+
+.mandala_top > div + div + div + div
+{
+    transform: rotate(154.5deg);
+}
+
+.mandala_top > div + div + div + div + div
+{
+    transform: rotate(206deg);
+}
+
+.mandala_top > div + div + div + div + div + div
+{
+    transform: rotate(257.5deg);
+}
+
+.mandala_top > div + div + div + div + div + div + div
+{
+    transform: rotate(309deg);
+}
+
+.m_inner1
+{
+    position: absolute;
+    top:-60px;
+    left: 0px;
+    height: 110px;
+    width: 117px;
+    border-bottom: solid 5px #2f4583;
+    border-radius: 60px;
+    animation: mandala-spin1 5s linear infinite;
+}
+
+.m_inner2
+{
+    position: absolute;
+    top:-80px;
+    left: 0px;
+    height: 140px;
+    width: 125px;
+    border-bottom: solid 5px;
+    border-radius: 70px;
+    animation: mandala-spin2 4s linear infinite;
+}
+
+.m_inner3
+{
+    position: absolute;
+    top:0;
+    left:0;
+    height:60px;
+    width:60px;
+    border-bottom: dotted 6px #5e5caa;
+    border-right: dotted 6px #5e5caa;
+    border-radius: 70px;
+    animation: mandala-spin3 3s ease-in-out infinite;
 }
 
 .spinner_hide
 {
-    display:none;
+    
+    opacity: 0;
 }
 
 .spinner_show
 {
-    display:block;
+    
+    opacity: 1;
 }
 
-@keyframes infinite-spin 
+@keyframes mandala-spin1
 {
-    from 
+    from
     {
-      transform: rotate(0deg);
+        transform: rotate(0deg);  
     }
-    to 
+    to
     {
-      transform: rotate(360deg);
+        transform: rotate(-360deg);  
     }
 }
+
+@keyframes mandala-spin2
+{
+    from
+    {
+        transform: rotate(0deg);  
+    }
+    to
+    {
+        transform: rotate(360deg);  
+    }
+}
+
+@keyframes mandala-spin3
+{
+    0%
+    {
+        transform: rotate(0deg);
+        transform: scale(0.1);
+        opacity: 1;
+    }
+    100%
+    {
+        transform: rotate(360deg);  
+        transform: scale(1.4);
+        opacity: 0;  
+    }
+}
+
+
 
 @media screen and (min-width: 800px) 
 {
