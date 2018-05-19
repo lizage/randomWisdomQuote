@@ -1,1 +1,4 @@
+
+let currentQuote = {};
+
 let pinnedQuotes = [];

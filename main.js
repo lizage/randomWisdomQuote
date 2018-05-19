@@ -3,10 +3,11 @@ const $$ = (s) => document.querySelectorAll(s);
 
 function buildMandala() {
   
-  let mandala_top_div = document.createElement('div');
+  const mandala_top_div = document.createElement('div');
   mandala_top_div.classList.add('mandala_top');
-  mandala_top_div.classList.add('spinner_hide');
-  $('.quotes_wrapper').appendChild(mandala_top_div);
+  mandala_top_div.classList.add('spinner_show');
+  //$('.quotes_wrapper').appendChild(mandala_top_div);
+  $('.menu_wrapper').insertAdjacentElement('afterend', mandala_top_div);
   
   for(let i=0; i<7; i++) {
     let m_div = document.createElement('div'); 
@@ -20,12 +21,7 @@ function buildMandala() {
   }
 }
 
-function toggleSpinner() {
-  classTogglr('.single_quote_wrapper','quote_show','quote_hide');
-  classTogglr('.mandala_top','spinner_hide','spinner_show');
-  
-}
-
+// generate API key
 function randomFixedInteger(length) {
   return 
     Math.floor(Math.pow(10, length-1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length-1) - 1));
@@ -37,19 +33,40 @@ function classTogglr(target,class1,class2)
   $(target).classList.toggle(class2);
 }
 
-function renderQuote(response) {
+function toggleWaitingMode() {
+  classTogglr('.single_quote_wrapper','quote_show','quote_hide');
+  classTogglr('.mandala_top','spinner_hide','spinner_show');
+  
+}
+
+function getUniqueId(quoteObj) {
+  let link_arr = quoteObj.quoteLink.split('/'); 
+  return quoteObj.quoteLink.split('/')[link_arr.length-2];
+}
+
+// Quote object constructor
+function Quote(text,author,id) {
+  this.text = text;
+  this.author = author;
+  this.id = id;
+}
+
+function handleResponse(response) {
+  // Error case
   if (response.charAt(0) == "C") {
-    $('#current_buttons').style.display = "none";
-    $('.quote').classList.add('errMsg');
-    $('.quote').innerHTML = response;
-    $('.author').innerHTML = ""; 
+    $('#current_quote > .buttons').style.display = "none";
+    $('#current_quote > .quote_bground > .quote').classList.add('errMsg');
+    $('#current_quote > .quote_bground > .quote').innerHTML = response;
+    $('#current_quote > .quote_bground > .author').innerHTML = ""; 
   }
+  // Response OK case
   else {
-    $('#current_buttons').style.display = "block";
-    $('.quote').classList.remove('errMsg');
-    const contentsObj = JSON.parse(response);
-    $('.quote').innerHTML = contentsObj.quoteText;
-    $('.author').innerHTML = contentsObj.quoteAuthor;
+    $('#current_quote > .buttons').style.display = "block";
+    $('#current_quote > .quote_bground > .quote').classList.remove('errMsg');
+    const quoteObj = JSON.parse(response);
+    currentQuote = new Quote(quoteObj.quoteText, quoteObj.quoteAuthor, getUniqueId(quoteObj));
+    $('#current_quote > .quote_bground > .quote').innerHTML = currentQuote.text;
+    $('#current_quote > .quote_bground > .author').innerHTML = currentQuote.author;
   }
 }
 
@@ -57,75 +74,101 @@ function getQuote() {
   const key = randomFixedInteger(6);
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
   const url = `http://api.forismatic.com/api/1.0/?method=getQuote&key=${key}&format=json&lang=en`; 
-  toggleSpinner();
   fetch(proxyurl + url) 
   .then(response => response.text())
-  .then(contents => {toggleSpinner(); renderQuote(contents);})
+  .then(contents => {toggleWaitingMode(); handleResponse(contents);})
   .catch(() => { 
-    renderQuote("Can’t access API, please try again later");
+    handleResponse("Can’t access API, please try again later");
   })
 }
-
-function Quote(text,author) {
-  this.text = text;
-  this.author = author;
-}
-
-
 
 function renderPinnedTitle() {
   let title = document.createElement('div');
   title.classList.add('pinned_quotes_title');
-  title.innerHTML = "My pinned quotes:";
+  title.innerHTML = "My saved quotes:";
   $('.quotes_wrapper').appendChild(title);
 }
 
 function pinCurrentQuote() {
-  let p_quote = document.createElement('div');
-  $('.pinned_quotes_title').insertAdjacentElement('afterend', p_quote);
-  //p_quote = $('.quotes_wrapper').insertAfter(p_quote, $('.pinned_quotes_title'));
-  p_quote.classList.add('single_quote_wrapper');
-  p_quote.innerHTML = 
+
+  pinnedQuotes.push(currentQuote);
+
+  let quote_div = document.createElement('div');
+  quote_div.classList.add('single_quote_wrapper');
+  quote_div.setAttribute('id', currentQuote.id);
+  quote_div.innerHTML = 
     `<div class="pinned_quote_bground">
-      <div class="quote">${pinnedQuotes[pinnedQuotes.length-1].text}</div>
-      <div class="author">${pinnedQuotes[pinnedQuotes.length-1].author}</div>
+      <div class="quote">${currentQuote.text}</div>
+      <div class="author">${currentQuote.author}</div>
     </div>
-    <div class="buttons pinned_buttons" id="current_buttons">
-      <button><i class="fas fa-times"></i></button>
+    <div class="buttons pinned_buttons">
+      <button id="remove_${currentQuote.id}" class="remove_pin"><i class="fas fa-times"></i></button>
       <button><i class="fas fa-share-alt fa-sm"></i></button>
     </div>
     `;
-  //$('.quotes_wrapper').appendFirstChild(p_quote);
-  
+    $('.pinned_quotes_title').insertAdjacentElement('afterend', quote_div); 
+}
+
+function setRemoveButton() {
+  $('.remove_pin').addEventListener("click", (event) => {
+    // get the id of quote to be removed
+    let id_arr = event.currentTarget.getAttribute('id').split('_');
+    let id = id_arr[id_arr.length-1];
+
+    // restore pin_quote button
+    if(currentQuote.id === id) {
+      $('#pin_quote').disabled = false; 
+    }
+    
+    // remove quote object from pinnedQuotes array
+    let = obj = pinnedQuotes.find(x => x.id === id);
+    let index = pinnedQuotes.indexOf(obj);
+    pinnedQuotes.splice(index, 1);
+    
+    // remove card from screen
+    let card = document.getElementById(id);
+    $('.quotes_wrapper').removeChild(card);
+
+    //remove title if array is empty
+    if(pinnedQuotes.length === 0) {
+      $('.quotes_wrapper').removeChild($('.pinned_quotes_title'));
+    }
+  })
 }
 
 function renderPinnedQuotes() {
-  if(pinnedQuotes.length === 0) {
+  if(currentQuote === {}) {
     return;
   }
-  if(pinnedQuotes.length === 1) {
+  else if(pinnedQuotes.length === 0) {
     renderPinnedTitle();
   }
+  else if(pinnedQuotes[pinnedQuotes.length-1].id === currentQuote.id) {
+    return;
+  }
   pinCurrentQuote();
+  setRemoveButton();
 }
 
-function pinQuote() {
-  let newQuote = new Quote($('.quote').innerHTML, $('.author').innerHTML);
-  pinnedQuotes.push(newQuote);
-  renderPinnedQuotes();
-}
+function init() {
 
-$('#pin_quote').addEventListener("click", (event) => {
-  pinQuote();
-})
-
-$('#load_quote').addEventListener("click", (event) => {
+  buildMandala();
   getQuote();
-})
+
+  $('#load_quote').addEventListener("click", (event) => {
+    $('#pin_quote').disabled = false;
+    toggleWaitingMode();
+    getQuote();
+  })
+  
+  $('#pin_quote').addEventListener("click", (event) => {
+    $('#pin_quote').disabled = true;
+    renderPinnedQuotes();
+  })
+}
 
 document.addEventListener("DOMContentLoaded", (event) => {
-  buildMandala();
-  //getQuote();
+  init();
 });
 
 

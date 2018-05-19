@@ -44,6 +44,17 @@ button:focus
     outline-width: 0;
 }
 
+button:disabled
+{
+    color:#999999;
+    cursor: auto;
+}
+
+button:disabled:hover
+{
+    font-size: 1rem;
+}
+
 .errMsg
 {
     color:#949911; 
@@ -75,6 +86,7 @@ button:focus
     align-items: center;
     justify-content: flex-start;
     flex-grow: 0;
+    z-index: 2;
 }
 
 .menu_wrapper div
@@ -129,6 +141,7 @@ button:focus
     width: 100%;
     font-size: 0.8rem;
     text-align: center;
+    margin-top: 1rem;
 }
 
 .quote_bground, .pinned_quote_bground
@@ -169,8 +182,6 @@ button:focus
         left:1.5rem;
 }
 
-
-
 .mandala_top
 {
     position: absolute;
@@ -178,10 +189,9 @@ button:focus
     right: -120px;
     width: 400px;
     height: 400px;  
-    animation: mandala-spin2 6s linear infinite;
+    animation: mandala-spin2 50s linear infinite;
     opacity:0;
-    transition: opacity 200ms ease-in-out;
-    
+    transition: opacity 200ms ease-in-out;   
 }
 
 .mandala_top > div
