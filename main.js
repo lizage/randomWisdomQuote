@@ -4,9 +4,9 @@ const $$ = (s) => document.querySelectorAll(s);
 function buildMandala() {
   
   const mandala_top_div = document.createElement('div');
+  mandala_top_div.classList.add('mandala');
   mandala_top_div.classList.add('mandala_top');
   mandala_top_div.classList.add('spinner_show');
-  //$('.quotes_wrapper').appendChild(mandala_top_div);
   $('.menu_wrapper').insertAdjacentElement('afterend', mandala_top_div);
   
   for(let i=0; i<7; i++) {
@@ -34,7 +34,7 @@ function classTogglr(target,class1,class2)
 }
 
 function toggleWaitingMode() {
-  classTogglr('.single_quote_wrapper','quote_show','quote_hide');
+  classTogglr('#current_quote','quote_show','quote_hide');
   classTogglr('.mandala_top','spinner_hide','spinner_show');
   
 }
@@ -78,7 +78,7 @@ function getQuote() {
   .then(response => response.text())
   .then(contents => {toggleWaitingMode(); handleResponse(contents);})
   .catch(() => { 
-    handleResponse("Can’t access API, please try again later");
+    handleResponse("Can’t access API, please try again");
   })
 }
 
@@ -90,11 +90,10 @@ function renderPinnedTitle() {
 }
 
 function pinCurrentQuote() {
-
   pinnedQuotes.push(currentQuote);
-
   let quote_div = document.createElement('div');
   quote_div.classList.add('single_quote_wrapper');
+  quote_div.classList.add('pinned_add');
   quote_div.setAttribute('id', currentQuote.id);
   quote_div.innerHTML = 
     `<div class="pinned_quote_bground">
@@ -110,6 +109,7 @@ function pinCurrentQuote() {
 }
 
 function setRemoveButton() {
+
   $('.remove_pin').addEventListener("click", (event) => {
     // get the id of quote to be removed
     let id_arr = event.currentTarget.getAttribute('id').split('_');
@@ -127,8 +127,10 @@ function setRemoveButton() {
     
     // remove card from screen
     let card = document.getElementById(id);
-    $('.quotes_wrapper').removeChild(card);
-
+    card.classList.remove('pinned_add');
+    card.classList.add('pinned_remove');
+    setTimeout(() => $('.quotes_wrapper').removeChild(card), 350);
+    
     //remove title if array is empty
     if(pinnedQuotes.length === 0) {
       $('.quotes_wrapper').removeChild($('.pinned_quotes_title'));

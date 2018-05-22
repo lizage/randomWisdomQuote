@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Random wisdom quote</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" 
+        integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        
+
+        
+
+        .single_quote_wrapper
+        {
+            position: relative;
+            margin: 1.5rem 0 1.5rem 0;  
+            width: 100%;   
+            transition: all 300ms ease;
+        }
+        
+        .pinned_add
+        {
+            animation: pin_quote_add 300ms cubic-bezier(.75,.25,.63,.95);
+            transform-origin: top;
+        }
+        
+        .pinned_remove
+        {
+            animation: pin_quote_remove 1s cubic-bezier(.36,-0.64,.34,1.76);
+            transform-origin: top;   
+        }
+
+@keyframes pin_quote_add
+{
+    from
+    {
+        top:-200px;
+        opacity: 0;
+        transform: rotate(10deg);
+    }
+    to
+    {
+        top:0;
+        opacity: 0.7;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes pin_quote_remove
+{
+    from
+    {
+        top:0;
+        opacity: 0.7;
+
+        
+    }
+    
+    to
+    {
+        top:-200px;
+        opacity: 0;
+        
+    }
+}
+        
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="menu_wrapper">
+            <div class="menu_theme">
+                <button><i class="fa fa-paint-brush fa-sm"></i></button>
+            </div>
+            <div class="menu_refresh">
+                <button id="load_quote"><i class="fa fa-sm">&#xf021;</i></button>
+            </div>
+        </div>
+        <div class="placeholder placeholder_open">
+                <button id="add" style="border:solid 1px;">add</button>
+                <button id="remove" style="border:solid 1px;">remove</button>
+            </div>
+        <div class="quotes_wrapper">
+            
+            <div class="single_quote_wrapper pinned_add"  id="ref">
+                <div class="quote_bground">
+                    <div class="quote">The world has the habit of making room for the man whose actions show that he knows where he is going.</div>
+                    <div class="author">Napoleon Hill</div>
+                </div>
+                <div class="buttons">
+                    <button id="pin_quote"><i class="fas fa-thumbtack fa-sm" data-fa-transform="rotate-30"></i></button>
+                    <button id="share_quote"><i class="fas fa-share-alt fa-sm"></i></button>
+                </div>
+            </div>
+            <div class="single_quote_wrapper pinned_add">
+                <div class="quote_bground">
+                    <div class="quote">They can conquer who believe they can.</div>
+                    <div class="author">Virgil</div>
+                </div>
+                <div class="buttons">
+                    <button id="pin_quote"><i class="fas fa-thumbtack fa-sm" data-fa-transform="rotate-30"></i></button>
+                    <button id="share_quote"><i class="fas fa-share-alt fa-sm"></i></button>
+                </div>
+            </div>
+            <div class="single_quote_wrapper pinned_add">
+                <div class="quote_bground">
+                    <div class="quote">A wise man will make more opportunities than he finds.</div>
+                    <div class="author">Francis Bacon</div>
+                </div>
+                <div class="buttons">
+                    <button id="pin_quote"><i class="fas fa-thumbtack fa-sm" data-fa-transform="rotate-30"></i></button>
+                    <button id="share_quote"><i class="fas fa-share-alt fa-sm"></i></button>
+                </div>
+            </div>
+            <div class="single_quote_wrapper pinned_add">
+                <div class="quote_bground">
+                    <div class="quote">Your big opportunity may be right where you are now.</div>
+                    <div class="author">Napoleon Hill</div>
+                </div>
+                <div class="buttons">
+                    <button id="pin_quote"><i class="fas fa-thumbtack fa-sm" data-fa-transform="rotate-30"></i></button>
+                    <button id="share_quote"><i class="fas fa-share-alt fa-sm"></i></button>
+                </div>
+            </div>
+            <div class="single_quote_wrapper pinned_add">
+                <div class="quote_bground">
+                    <div class="quote">Ideas are the beginning points of all fortunes.</div>
+                    <div class="author">Napoleon Hill</div>
+                </div>
+                <div class="buttons">
+                    <button id="pin_quote"><i class="fas fa-thumbtack fa-sm" data-fa-transform="rotate-30"></i></button>
+                    <button id="share_quote"><i class="fas fa-share-alt fa-sm"></i></button>
+                </div>
+            </div>                          
+        </div>
+    </div>
+</body>
+<script src="http://cdn.jsdelivr.net/bluebird/3.4.0/bluebird.min.js"></script>
+<script src="storage.js"></script>
+<script>
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => document.querySelectorAll(s);
+
+    function add_quote() {
+        let new_card = document.createElement('div');
+        new_card.classList.add('single_quote_wrapper');
+        new_card.classList.add('pinned_add');
+        new_card.setAttribute("id", "test_quote");
+        new_card.innerHTML = `
+            <div class="quote_bground">
+                <div class="quote">Your big opportunity may be right where you are now.</div>
+                <div class="author">Napoleon Hill</div>
+            </div>
+            <div class="buttons">
+                <button id="pin_quote"><i class="fas fa-thumbtack fa-sm" data-fa-transform="rotate-30"></i></button>
+                <button id="share_quote"><i class="fas fa-share-alt fa-sm"></i></button>
+            </div>`
+        setTimeout(() => $('.quotes_wrapper').insertBefore(new_card, $('.quotes_wrapper').firstChild), 300);
+        
+        //alert("add");
+    }
+
+    function remove_quote() {
+        $('.single_quote_wrapper').classList.remove('pinned_add');
+        $('.single_quote_wrapper').classList.add('pinned_remove');
+        setTimeout(() => $('.quotes_wrapper').removeChild($('.single_quote_wrapper')), 350);
+        
+        //alert("remove");
+    }
+
+    $('#add').addEventListener("click", (event) => add_quote());
+    $('#remove').addEventListener("click", (event) => remove_quote());
+
+    </script>
+<!-- <script src="main.js"></script> -->
+</html>
