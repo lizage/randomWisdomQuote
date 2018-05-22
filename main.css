@@ -23,19 +23,34 @@ body
     overflow-x: hidden;
 }
 
+/* generic selectors */
+
+.buttons button
+{
+    position: absolute;
+
+}
+
+.buttons button + button
+{
+    left:1.5rem;
+    
+}
+
 button
 {
     background-color: transparent;
     border: none;
     color:#430f6f;
     cursor: pointer;
-    transition: font-size 200ms ease-in-out;
+    transition: margin 100ms ease-in-out;
+    margin: 2px 0 2px 0;
 }
 
 button:hover
 {
     color:#949911; 
-    font-size: 1.2rem; 
+    margin: 0px 0 4px 0; 
 }
 
 button:focus
@@ -47,32 +62,12 @@ button:disabled
 {
     color:#999999;
     cursor: auto;
+    margin: 2px 0 2px 0;
+    transition: none;
 }
 
-button:disabled:hover
-{
-    font-size: 1rem;
-}
 
-.errMsg
-{
-    color:#949911; 
-}
-
-.wrapper
-{
-    flex-basis: 100%;
-    max-width: 700px;
-    min-height: 100vh;
-    display: flex;
-    flex-flow: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: flex-start;
-    background: rgba(255, 255, 255, 0.8);
-    position: relative;
-    padding-bottom: 1.5rem;
-}
+/* menu */
 
 .menu_wrapper
 {
@@ -88,21 +83,83 @@ button:disabled:hover
     z-index: 2;
 }
 
-.menu_wrapper div
+    .menu_wrapper div
+    {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 1rem;
+        text-align: center;
+        padding: 0.3rem;
+        background-color: white;
+        box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.7);
+        margin-right: 1rem;
+    }
+
+
+/* sharing menu */
+
+.share_options
 {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 1rem;
-    text-align: center;
-    padding: 0.3rem;
-    background-color: white;
-    box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.7);
-    margin-right: 1rem;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.menu_refresh button
+.share_options div
 {
-    margin-top: 0.1rem;
+    width: 20rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.9);
+    z-index: 4;
+    margin: 1.2rem 1rem 1rem 1rem;
+    padding:1.5rem;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    position: relative;
+}
+
+.share_options div button
+{
+    margin: 4px 0 4px 0;
+    transition: margin 100ms ease-in;
+}
+
+.share_options div button:hover
+{
+    font-size: 1rem; 
+    margin: 0 0 8px 0;
+}
+
+.share_options div .close_window
+{
+    position: absolute;
+    top:-0.1rem;
+    right: 0.4rem;
+}
+
+/* wrappers */
+
+.wrapper
+{
+    flex-basis: 100%;
+    max-width: 700px;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    background: rgba(255, 255, 255, 0.8);
+    position: relative;
+    padding-bottom: 1.5rem;
 }
 
 .quotes_wrapper
@@ -128,28 +185,6 @@ button:disabled:hover
     margin: 1.5rem 0 1.5rem 0;  
     width: 100%;   
     transition: all 300ms ease;
-}
-
-.pinned_add
-{
-    animation: pin_quote_add 300ms cubic-bezier(.75,.25,.63,.95);
-    transform-origin: top;
-}
-
-.pinned_remove
-{
-    animation: pin_quote_remove 1s cubic-bezier(.36,-0.64,.34,1.76);
-    transform-origin: top;   
-}
-
-.quote_hide
-{
-    opacity:0;
-}
-
-.quote_show
-{
-    opacity:1;
 }
 
 .pinned_quotes_title
@@ -184,22 +219,42 @@ button:disabled:hover
     margin-top: 0.5rem;
 }
 
-.buttons
+.errMsg
 {
-    position: absolute;
+    color:#949911; 
 }
 
-.buttons button
+
+
+
+
+
+
+/* toggled selectors */
+
+.pinned_add
 {
-    position: absolute;
-    margin-top: 0.4rem;
-    margin-right: 0.3rem;
+    animation: pin_quote_add 300ms cubic-bezier(.75,.25,.63,.95);
+    transform-origin: top;
 }
 
-.buttons button + button
+.pinned_remove
 {
-        left:1.5rem;
+    animation: pin_quote_remove 1s cubic-bezier(.36,-0.64,.34,1.76);
+    transform-origin: top;   
 }
+
+.quote_hide
+{
+    opacity:0;
+}
+
+.quote_show
+{
+    opacity:1;
+}
+
+/* mandalas and spinners */ 
 
 .mandala
 {
@@ -318,6 +373,8 @@ button:disabled:hover
     opacity: 1;
 }
 
+/* animations and media queries */
+
 @keyframes pin_quote_add
 {
     from
@@ -391,8 +448,6 @@ button:disabled:hover
         opacity: 0;  
     }
 }
-
-
 
 @media screen and (min-width: 800px) 
 {

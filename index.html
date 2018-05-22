@@ -10,13 +10,39 @@
         <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    <!-- <div class="share_options">
+        <div>
+            <button>
+                <i class="far fa-envelope fa-2x"></i>
+            </button>
+            <button>
+                <i class="fab fa-whatsapp fa-2x"></i>
+            </button>
+            <button>
+                <i class="fab fa-facebook-f fa-2x"></i>
+            </button>
+            <button>
+                <i class="fab fa-twitter fa-2x"></i>
+            </button>
+            <button>
+                <i class="fab fa-pinterest-p fa-2x"></i>
+            </button>
+            <button class="close_window">
+                <i class="fas fa-times fa-xs"></i>
+            </button>
+        </div>
+    </div> -->
     <div class="wrapper">
         <div class="menu_wrapper">
             <div class="menu_theme">
-                <button><i class="fa fa-paint-brush fa-sm"></i></button>
+                <button>
+                        <i class="fa fa-paint-brush fa-sm"></i>
+                </button>
             </div>
             <div class="menu_refresh">
-                <button id="load_quote"><i class="fa fa-sm">&#xf021;</i></button>
+                <button id="load_quote">
+                        <i class="fa fa-sm">&#xf021;</i>
+                </button>
             </div>
         </div>
         <div class="quotes_wrapper">
@@ -27,17 +53,18 @@
                         <div class="author"></div>
                     </div>
                     <div class="buttons">
-                        <button id="pin_quote"><i class="fas fa-thumbtack fa-sm" data-fa-transform="rotate-30"></i></button>
-                        <button id="share_quote"><i class="fas fa-share-alt fa-sm"></i></button>
+                        <button id="pin_quote">
+                                <i class="fas fa-thumbtack fa-sm" data-fa-transform="rotate-30"></i>
+                        </button>
+                        <button id="share_quote">
+                                <i class="fas fa-share-alt fa-sm"></i>
+                        </button>
                     </div>
                 </div>
-
-            </div>
-                                      
+            </div>                      
         </div>
     </div>
 </body>
-<script src="http://cdn.jsdelivr.net/bluebird/3.4.0/bluebird.min.js"></script>
 <script src="storage.js"></script>
 <script src="main.js"></script>
 </html>

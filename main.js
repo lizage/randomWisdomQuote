@@ -63,6 +63,7 @@ function handleResponse(response) {
   // Error case
   if (response.charAt(0) == "C") {
     $('#current_quote > .quote_bground > .quote').innerHTML = response;
+    $('#current_quote > .quote_bground > .author').innerHTML = "";
     $('#current_quote > .buttons').style.display = "none";
     $('#current_quote > .quote_bground > .quote').classList.add('errMsg');
   }
@@ -109,8 +110,12 @@ function pinCurrentQuote() {
         <div class="author">${currentQuote.author}</div>
       </div>
       <div class="buttons pinned_buttons">
-        <button id="remove_${currentQuote.id}" class="remove_pin"><i class="fas fa-times"></i></button>
-        <button><i class="fas fa-share-alt fa-sm"></i></button>
+        <button id="remove_${currentQuote.id}" class="remove_pin">
+          <i class="fas fa-times"></i>
+        </button>
+        <button>
+          <i class="fas fa-share-alt fa-sm"></i>
+        </button>
       </div>
       `);
     $('.pinned_quotes_title').insertAdjacentElement('afterend', quote_div); 
