@@ -268,24 +268,31 @@ function init() {
     $('#pin_quote').disabled = false;
     toggleWaitingMode();
     getQuote();
-  })
+  });
   
   $('#pin_quote').addEventListener("click", (event) => {
     $('#pin_quote').disabled = true;
     renderPinnedQuotes();
-  })
+  });
 
   $('.close_window').addEventListener("click", (e) => {
     classTogglr('.share_options','share_hide','share_show');
-  })
+  });
 
-  let counter = window.setInterval(() => {
+  // let counter = window.setInterval(() => {
    
-    
-  
-    $('.menu_refresh').classList.add('blink'); // todo if there are quotes at local storage remove this
-    clearInterval(counter);
-  }, 4000);
+  //   $('.menu_refresh').classList.add('blink'); // todo if there are quotes at local storage remove this
+  //   clearInterval(counter);
+  // }, 4000);
+
+  window.addEventListener('scroll', function(){
+     $('.mandala_bottom div').classList.add('scroll_animation');
+     setTimeout(() => {
+      $('.mandala_bottom div').classList.remove('scroll_animation');
+     }, 1000)
+  });
+
+
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {
