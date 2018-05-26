@@ -95,6 +95,11 @@ button:disabled
         margin-right: 1rem;
     }
 
+    .blink
+    {
+        animation: blinkOnce 1.2s ease;
+    }
+
 
 /* sharing menu */
 
@@ -143,6 +148,18 @@ button:disabled
     position: absolute;
     top:-0.1rem;
     right: 0.4rem;
+}
+
+.share_show
+{
+    display: flex;
+    animation: fadein 800ms ease;
+}
+
+.share_hide
+{
+    display: none;
+    animation: fadeout 800ms ease;
 }
 
 /* wrappers */
@@ -223,12 +240,6 @@ button:disabled
 {
     color:#949911; 
 }
-
-
-
-
-
-
 
 /* toggled selectors */
 
@@ -374,6 +385,73 @@ button:disabled
 }
 
 /* animations and media queries */
+
+@keyframes blinkOnce
+{
+    0%
+    {
+        height: 2rem;
+        width: 2rem;
+        border-radius: 1rem;
+        margin-top: 0;
+    }
+
+    33%
+    {
+        height: 2.4rem;
+        width: 2.4rem;
+        border-radius: 1.2rem;
+        margin-top: -0.4rem;
+    }
+
+    50%
+    {
+        height: 2rem;
+        width: 2rem;
+        border-radius: 1rem;
+        margin-top: 0;
+    }
+
+    66%
+    {
+        height: 2.4rem;
+        width: 2.4rem;
+        border-radius: 1.2rem;
+        margin-top: -0.4rem;
+    }
+
+    100%
+    {
+        height: 2rem;
+        width: 2rem;
+        border-radius: 1rem;
+        margin-top: 0;
+    }
+}
+
+@keyframes fadein 
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout 
+{
+    from
+    {
+        opacity: 1;
+    }
+    to
+    {
+        opacity: 0;
+    }
+}
 
 @keyframes pin_quote_add
 {
