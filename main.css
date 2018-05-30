@@ -190,7 +190,7 @@ button:disabled:hover
     flex-grow: 1;
     display: flex;
     flex-flow: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 }
 
@@ -281,7 +281,7 @@ button:disabled:hover
 
 .mandala_bottom
 {
-    bottom:-150px;
+    bottom:-250px;
     left: -150px;
     width: 400px;
     height: 400px;  
