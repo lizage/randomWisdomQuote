@@ -38,12 +38,6 @@ button:hover
 .share_options div
 {
     background-color: #333333;
-    box-shadow: 0px 0px 1px 1px rgba(252, 219, 252, 1);
-}
-
-.wrapper
-{
-    background: rgba(0, 0, 0, 0.6);
 }
 
 .quote_bground, .pinned_quote_bground
@@ -60,6 +54,7 @@ button:hover
 div.mandala_bottom div
 {
     border: dotted 7px rgba(252, 219, 252, 0.5);
+    opacity: 0.8;
 }
 
 .m_inner1
@@ -84,6 +79,6 @@ div.mandala_bottom div
     div.mandala_bottom div
     {
         border: dotted 7px #4a43c2;
-        opacity: 0.7;
+        opacity: 0.6;
     }  
 }

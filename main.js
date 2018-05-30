@@ -1,3 +1,6 @@
+let currentQuote = {};
+let pinnedQuotes = [];
+
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
 
@@ -259,7 +262,6 @@ function renderSharing() {
 }
 
 function syncLocalStorage() {
-  //alert('syncing local storage');
   return;
 }
 
@@ -277,6 +279,7 @@ function toggleTheme() {
 
 function init() {
 
+  // to do later:
   // load items from local storage and push them to pinnedQuotes array 
   // also display them on screen
 

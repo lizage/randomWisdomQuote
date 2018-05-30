@@ -120,13 +120,12 @@ button:disabled:hover
 
 .share_options div
 {
-    width: 20rem;
     border-radius: 10px;
     z-index: 4;
-    margin: 1.2rem 1rem 1rem 1rem;
-    padding:1.5rem;
+    margin: 1rem 0.5rem 0.5rem 0.5rem;
+    padding:0.8rem;
     display: flex;
-    flex-flow: row;
+    flex-flow: column;
     flex-wrap: nowrap;
     justify-content: space-between;
     position: relative;
@@ -134,21 +133,26 @@ button:disabled:hover
 
 .share_options div button
 {
-    margin: 4px 0 4px 0;
+    margin: 0.5rem 0.2rem 0.5rem 0.2rem;
     transition: margin 100ms ease-in;
 }
 
 .share_options div button:hover
 {
     font-size: 1rem; 
-    margin: 0 0 8px 0;
+    margin: 0.5rem 0.4rem 0.5rem 0;
 }
 
 .share_options div .close_window
 {
     position: absolute;
-    top:-0.1rem;
-    right: 0.4rem;
+    top:-0.4rem;
+    left: 0.2rem;
+}
+
+.share_options div .close_window:hover
+{
+    margin: 0.5rem 0.2rem 0.5rem 0.2rem;
 }
 
 .share_show
@@ -168,7 +172,7 @@ button:disabled:hover
 .wrapper
 {
     flex-basis: 100%;
-    max-width: 700px;
+    max-width: 980px;
     min-height: 100vh;
     display: flex;
     flex-flow: column;
@@ -277,14 +281,14 @@ button:disabled:hover
 
 .mandala_bottom
 {
-    bottom:20px;
-    left: -200px;
+    bottom:-150px;
+    left: -150px;
     width: 400px;
     height: 400px;  
     opacity: 0.8;
     position: fixed;
     z-index: -1;
-    transition: left 300ms ease;
+    transition: left 300ms ease, width 300ms ease, height 300ms ease;
 }
 
 div.mandala_bottom div
@@ -557,10 +561,10 @@ div.mandala_bottom div
     } 
     
     .mandala_bottom
-    {
-        
+    { 
         left: 100px;
-        
-        
+        width: 480px;
+        height: 480px; 
     }
 }
+
