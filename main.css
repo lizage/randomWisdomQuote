@@ -194,12 +194,6 @@ button:disabled:hover
     align-items: center;
 }
 
-.placeholder
-{
-    width: 100%;
-    min-height: 25vh;
-}
-
 .single_quote_wrapper
 {
     position: relative;
