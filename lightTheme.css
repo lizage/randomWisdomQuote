@@ -1,0 +1,79 @@
+html, *
+{
+    font-family: 'Fredericka the Great', cursive;
+}
+
+body
+{
+    color:#430f6f;
+    background: linear-gradient(to bottom, #7989bd 0%,#b0bce8 31%,#5e7fc4 74%,#4967a5 100%);
+}
+
+button
+{
+    color:#430f6f;
+}
+
+button:hover
+{
+    color:#949911; 
+}
+
+.menu_wrapper div
+{
+    background-color: white;
+    box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.7);
+}
+
+.share_options
+{
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.share_options div
+{
+    background-color: white;
+    box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.9);
+}
+
+.wrapper
+{
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.quote_bground, .pinned_quote_bground
+{
+    background-color: white;
+    box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.7);
+}
+
+.errMsg
+{
+    color:#949911; 
+}
+
+div.mandala_bottom div
+{
+    border: dotted 7px white;
+}
+
+.m_inner1
+{
+    border-bottom: solid 5px #2f4583;
+    border-left: solid 5px #2f4583;
+}
+
+.m_inner3
+{
+    border-bottom: dotted 6px #5e5caa;
+    border-right: dotted 6px #5e5caa;
+}
+
+@media screen and (min-width: 800px) 
+{
+
+    div.mandala_bottom div
+    {
+        opacity: 0.8;
+    }
+}

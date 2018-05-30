@@ -2,20 +2,21 @@ html, *
 {
     box-sizing: border-box;
     font-size: 25px;
-    font-family: 'Fredericka the Great', cursive;
     margin: 0;
     padding: 0;
 }
 
+.change_theme
+{
+    animation: changeTheme 1s ease;
+}
+
 body
 {
-    
     display: flex;
     flex-flow: row;
     flex-wrap: nowrap;
-    color:#430f6f;
     justify-content: space-around;
-    background-image: url(img/blue_background.jpg);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -26,31 +27,32 @@ body
 
 /* generic selectors */
 
+.buttons
+{
+    margin-top: 10px;
+}
+
 .buttons button
 {
     position: absolute;
-
 }
 
 .buttons button + button
 {
     left:1.5rem;
-    
 }
 
 button
 {
     background-color: transparent;
     border: none;
-    color:#430f6f;
     cursor: pointer;
     transition: margin 100ms ease-in-out;
     margin: 2px 0 2px 0;
 }
 
 button:hover
-{
-    color:#949911; 
+{ 
     margin: 0px 0 4px 0; 
 }
 
@@ -67,6 +69,10 @@ button:disabled
     transition: none;
 }
 
+button:disabled:hover
+{
+    color:#999999;
+}
 
 /* menu */
 
@@ -91,8 +97,6 @@ button:disabled
         border-radius: 1rem;
         text-align: center;
         padding: 0.3rem;
-        background-color: white;
-        box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.7);
         margin-right: 1rem;
     }
 
@@ -101,7 +105,6 @@ button:disabled
         animation: blinkOnce 1s ease;
     }
 
-
 /* sharing menu */
 
 .share_options
@@ -109,7 +112,6 @@ button:disabled
     position: fixed;
     width: 100%;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.3);
     z-index: 3;
     display: flex;
     align-items: center;
@@ -119,9 +121,7 @@ button:disabled
 .share_options div
 {
     width: 20rem;
-    background-color: white;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.9);
     z-index: 4;
     margin: 1.2rem 1rem 1rem 1rem;
     padding:1.5rem;
@@ -175,7 +175,6 @@ button:disabled
     flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-start;
-    background: rgba(255, 255, 255, 0.8);
     position: relative;
     padding-bottom: 1.5rem;
 }
@@ -218,11 +217,8 @@ button:disabled
 
 .quote_bground, .pinned_quote_bground
 {
-    background-color: white;
     border-radius: 10px;
     padding: 1rem;
-    box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.7);
-    
 }
 
 .pinned_quote_bground, .pinned_buttons
@@ -235,11 +231,6 @@ button:disabled
     text-align: right;
     font-size: 0.8rem;
     margin-top: 0.5rem;
-}
-
-.errMsg
-{
-    color:#949911; 
 }
 
 /* toggled selectors */
@@ -292,12 +283,12 @@ button:disabled
     height: 400px;  
     opacity: 0.8;
     position: fixed;
-    z-index: -1
+    z-index: -1;
+    transition: left 300ms ease;
 }
 
 div.mandala_bottom div
 {
-    border: dotted 7px white;
     border-radius: 50%;
     position: absolute;
     top:5%;
@@ -309,10 +300,8 @@ div.mandala_bottom div
 
 .scroll_animation
 {
-    animation: mandala-spin4 1s ease; 
+    animation: mandala-spin4 1.5s ease; 
 }
-
-
 
 .mandala > div
 {
@@ -361,8 +350,6 @@ div.mandala_bottom div
     left: 0px;
     height: 110px;
     width: 117px;
-    border-bottom: solid 5px #2f4583;
-    border-left: solid 5px #2f4583;
     border-radius: 60px;
     animation: mandala-spin1 5s linear infinite;
 }
@@ -386,25 +373,42 @@ div.mandala_bottom div
     left:0;
     height:60px;
     width:60px;
-    border-bottom: dotted 6px #5e5caa;
-    border-right: dotted 6px #5e5caa;
     border-radius: 70px;
     animation: mandala-spin3 3s ease-in-out infinite;
 }
 
 .spinner_hide
 {
-    
     opacity: 0;
 }
 
 .spinner_show
 {
-    
     opacity: 1;
 }
 
 /* animations and media queries */
+
+@keyframes changeTheme
+{
+    0%
+    {
+        opacity: 1;
+    }
+    30%
+    {
+        opacity: 0;
+    }
+
+    70%
+    {
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 1;
+    }
+}
 
 @keyframes fadein 
 {
@@ -550,5 +554,13 @@ div.mandala_bottom div
     .menu_wrapper div + div
     {
         top:4.5rem;
-    }    
+    } 
+    
+    .mandala_bottom
+    {
+        
+        left: 100px;
+        
+        
+    }
 }

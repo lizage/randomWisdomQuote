@@ -17,6 +17,7 @@ function newNode(node, class_arr, id, parent, html) {
     }
     return new_node;
   }
+  
 
 function buildMandala() {
   const mandala_top_div = newNode('div', ['mandala', 'mandala_top', 'spinner_show']);
@@ -99,6 +100,7 @@ function renderPinnedTitle() {
 function pinCurrentQuote() {
   // push to array
   pinnedQuotes.push(currentQuote);
+  syncLocalStorage();
   
   // render on screen
   const quote_div = newNode(
@@ -136,6 +138,7 @@ function setRemoveButton() {
     const obj = pinnedQuotes.find(x => x.id === id);
     const index = pinnedQuotes.indexOf(obj);
     pinnedQuotes.splice(index, 1);
+    syncLocalStorage();
     
     // remove card from screen
     classTogglr('#' + id,'pinned_add','pinned_remove');
@@ -191,10 +194,6 @@ function showSocial(quote, author) {
   $('#share_wh').addEventListener("click", (e) => {
     return; // todo later
   });
-
-  //<a href="whatsapp://send" data-text="" data-href="" >Share</a>
-
-  
 
   let share_fb = newNode(
     'button', 
@@ -259,7 +258,27 @@ function renderSharing() {
   })  
 }
 
+function syncLocalStorage() {
+  //alert('syncing local storage');
+  return;
+}
+
+function toggleTheme() {
+  $('html').classList.add('change_theme');
+
+  let current_theme = $('#theme').getAttribute('href');
+  let next_theme = ((current_theme === 'lightTheme.css') ? 'darkTheme.css' : 'lightTheme.css');
+  $('#theme').setAttribute('href', next_theme);
+
+  setTimeout(() => {
+   $('html').classList.remove('change_theme');
+  }, 1000);  
+}
+
 function init() {
+
+  // load items from local storage and push them to pinnedQuotes array 
+  // also display them on screen
 
   buildMandala();
   getQuote();
@@ -279,20 +298,16 @@ function init() {
     classTogglr('.share_options','share_hide','share_show');
   });
 
-  // let counter = window.setInterval(() => {
-   
-  //   $('.menu_refresh').classList.add('blink'); // todo if there are quotes at local storage remove this
-  //   clearInterval(counter);
-  // }, 4000);
-
   window.addEventListener('scroll', function(){
      $('.mandala_bottom div').classList.add('scroll_animation');
      setTimeout(() => {
       $('.mandala_bottom div').classList.remove('scroll_animation');
-     }, 1000)
+     }, 2500)
   });
 
-
+  $('#toggle_theme').addEventListener("click", (e) => {
+    toggleTheme();
+  });
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {
