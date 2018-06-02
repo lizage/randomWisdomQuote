@@ -406,6 +406,14 @@ button:focus
     }
 }
 
+@media screen and (orientation:landscape) 
+{ 
+    .menu
+    {
+        border:solid 1px red;
+    }
+}
+
 
 
 
