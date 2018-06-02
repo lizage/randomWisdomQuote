@@ -8,11 +8,14 @@ html, *
 
 body
 {
-    font-family: 'Pangolin', cursive;
+    font-family: 'Playfair Display SC', serif;
     text-align: center;
-    background-color: #c3d4f0;
-    color:#0d1a30;
+    width: 100vw;
+    height: 100vh;
+    color:#0c2d69;
 }
+
+/* generic selectors */
 
 button
 {
@@ -33,30 +36,25 @@ button:focus
     outline-width: 0;
 }
 
+/* current qoute */
+
 .current_quote
 {
-    min-height: 40vh;
-    padding: 0.5rem;
-    text-align: left;
+    position: relative;
+    padding: 1rem;
+    text-align: center; 
+    background-color: #0c2d69;
     display: flex;
-    flex-flow: column;
-    justify-content: flex-start;
-    align-items: center;
-    /* animation: fadein 800ms ease-in-out; */
-    position: relative;
+    justify-content: space-around;
+    color: white;
 }
 
-.current_quote .current_quote_bg
+.current_quote div
 {
-    background-color: white;
-    border-radius: 0.2rem; 
-    padding: 0.6rem 1rem 0.6rem 1rem;
-    position: relative;
-    box-shadow: 0px 0px 4px 1px rgba(143,155,175,0.5);
-    width: 100%;
+    text-align: left;
+    max-width: 950px;
+    font-size:1.2rem;
 }
-
-
 
 .current_quote .author
 {
@@ -76,11 +74,13 @@ button:focus
     left: 1.7rem;
 }
 
+/* menu */
+
 .menu
 {
     height: 2rem;
-    padding: 0 20% 0 20%;
-    margin-top: 1rem;
+    margin: 1.5rem 0 2.5rem 0;
+    padding: 0 5% 0 5%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -93,22 +93,71 @@ button:focus
     width: 2rem;
     height: 2rem;
     border-radius: 1rem;
-    box-shadow: 0px 0px 4px 1px rgba(143,155,175,0.5);
+    border:solid 1px;
+    /* box-shadow: 0px 0px 4px 1px rgba(143,155,175,0.5); */
 }
 
-.menu button + button
+.menu button + button + button + button
 {
     width: 3rem;
     height: 3rem;
     border-radius: 1.5rem;   
 }
 
-.menu button + button + button
+/* pinned quotes */
+
+.pinned_quotes
 {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 1rem;   
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden; 
+    padding-bottom: 3rem;
+    -webkit-overflow-scrolling: touch;
 }
+
+-webkit-scrollbar {
+    display: none;
+}
+
+.pinned_quotes > div
+{
+    border-radius: 0.2rem;
+    height: auto;
+    border:solid 1px;
+    margin: 0 0.5rem 0 0.5rem;
+    text-align: left;
+    padding: 0.6rem 1rem 0.6rem 1rem;
+    position: relative;
+    flex: 0 0 85%;
+    max-width: 500px;
+}
+
+.pinned_quotes > div .quote, .pinned_quotes > div .author
+{
+    font-size: 0.9rem;
+}
+
+.pinned_quotes > div .author
+{
+    text-align: right;
+    margin-top: 0.6rem;
+}
+
+.pinned_quotes > div button
+{
+    position: absolute;
+    bottom: -1.5rem;
+    left: 0.5rem;
+}
+
+.pinned_quotes > div button + button
+{
+    left: 1.7rem;
+}
+
+/* spinner */
 
 .spinner
 {
@@ -175,6 +224,8 @@ button:focus
     transform: rotate(309deg);
 }
 
+/* animations */
+
 @keyframes fadein 
 {
     from
@@ -225,46 +276,14 @@ button:focus
 
 @media screen and (min-width: 800px) 
 {
-    body 
-    {
-        display: flex;
-        flex-flow: row;
-        flex-wrap: nowrap;
-        align-items: flex-start;
-        justify-content: space-around;
-        margin: 0 15% 0 15%;
-    }
-
     .menu
     {
-        order: 0;
-        margin: 0;
-        padding: 0;
-        width: 3rem;
-        min-height: 300px;
-        flex-basis: 10%;
-        flex-flow: column;
-        flex-grow: 0;
-        justify-content: flex-start;
-    }
 
-    .menu button
-    {
-        margin: 0.5rem 0 0.5rem 0;
-    }
-
-    .menu button + button
-    {
-        order: -1;
-    }
-
-    .current_quote
-    {
-        order: 1;
-        flex-basis: 90%;
-        flex-grow: 1;
-        max-width: 800px;
-        margin-left: 1.5rem; 
+        padding: 0 22% 0 22%;
+        
     }
 }
+
+
+
 
