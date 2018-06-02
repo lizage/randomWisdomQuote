@@ -11,6 +11,7 @@ body
     font-family: 'Pangolin', cursive;
     text-align: center;
     background-color: #c3d4f0;
+    color:#0d1a30;
 }
 
 button
@@ -34,34 +35,45 @@ button:focus
 
 .current_quote
 {
-    margin: 0.5rem;
+    min-height: 40vh;
+    padding: 0.5rem;
     text-align: left;
-    background-color: white;
-    border-radius: 0.2rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    /* animation: fadein 800ms ease-in-out; */
     position: relative;
 }
 
-.current_quote .quote
+.current_quote .current_quote_bg
 {
+    background-color: white;
+    border-radius: 0.2rem; 
     padding: 0.6rem 1rem 0.6rem 1rem;
+    position: relative;
+    box-shadow: 0px 0px 4px 1px rgba(143,155,175,0.5);
+    width: 100%;
 }
+
+
 
 .current_quote .author
 {
-    padding: 0 1rem 0.6rem 1rem;
     text-align: right;
+    margin-top: 0.5rem;
 }
 
 .current_quote button
 {
     position: absolute;
     bottom: -1.5rem;
-    left: 0.3rem;
+    left: 0.5rem;
 }
 
 .current_quote button + button
 {
-    left: 1.6rem;
+    left: 1.7rem;
 }
 
 .menu
@@ -81,7 +93,7 @@ button:focus
     width: 2rem;
     height: 2rem;
     border-radius: 1rem;
-    box-shadow: 0px 0px 4px 1px rgba(153,153,153,0.7);
+    box-shadow: 0px 0px 4px 1px rgba(143,155,175,0.5);
 }
 
 .menu button + button
@@ -96,5 +108,163 @@ button:focus
     width: 2rem;
     height: 2rem;
     border-radius: 1rem;   
+}
+
+.spinner
+{
+    display: none;
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    right: 25%;
+    z-index: 1;
+    animation: spinner 20s linear infinite;
+}
+
+.spinner div
+{
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    max-width:5rem;
+    max-height:5rem;
+    top: 50%;
+    right: 50%;
+    border-radius:50%;
+    transform-origin: top right;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.spinner div > div
+{
+    height: 90%;
+    background: transparent;
+    border-left: none;
+    animation: spinner 5s linear reverse infinite;
+    box-shadow: 5px 5px 5px 1px rgba(148,153,17,0.4);
+}
+
+.spinner div + div
+{
+    transform: rotate(51.5deg);
+} 
+
+.spinner div + div + div
+{
+    transform: rotate(103deg);
+} 
+
+.spinner div + div + div + div
+{
+    transform: rotate(154.5deg);
+}
+
+.spinner div + div + div + div + div
+{
+    transform: rotate(206deg);
+}
+
+.spinner div + div + div + div + div + div
+{
+    transform: rotate(257.5deg);
+}
+
+.spinner div + div + div + div + div + div + div
+{
+    transform: rotate(309deg);
+}
+
+@keyframes fadein 
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout 
+{
+    from
+    {
+        opacity: 1;
+    }
+    to
+    {
+        opacity: 0;
+    }
+}
+
+@keyframes spinner
+{
+    0%
+    {
+        transform: rotate(0deg);  
+    }
+    100%
+    {
+        transform: rotate(360deg);  
+    }
+}
+
+@keyframes renderQuote
+{
+    from
+    {
+        transform: translate3d(0, -100%, 0);
+    }
+    to
+    {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@media screen and (min-width: 800px) 
+{
+    body 
+    {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        justify-content: space-around;
+        margin: 0 15% 0 15%;
+    }
+
+    .menu
+    {
+        order: 0;
+        margin: 0;
+        padding: 0;
+        width: 3rem;
+        min-height: 300px;
+        flex-basis: 10%;
+        flex-flow: column;
+        flex-grow: 0;
+        justify-content: flex-start;
+    }
+
+    .menu button
+    {
+        margin: 0.5rem 0 0.5rem 0;
+    }
+
+    .menu button + button
+    {
+        order: -1;
+    }
+
+    .current_quote
+    {
+        order: 1;
+        flex-basis: 90%;
+        flex-grow: 1;
+        max-width: 800px;
+        margin-left: 1.5rem; 
+    }
 }
 

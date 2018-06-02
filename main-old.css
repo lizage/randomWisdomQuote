@@ -265,7 +265,7 @@ button:disabled:hover
     right: -120px;
     width: 400px;
     height: 400px;  
-    animation: mandala-spin2 50s linear infinite; 
+    
 }
 
 .mandala_bottom
