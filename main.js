@@ -283,7 +283,7 @@ function init() {
   // load items from local storage and push them to pinnedQuotes array 
   // also display them on screen
 
-  buildMandala();
+  //buildMandala();
   getQuote();
 
   $('#load_quote').addEventListener("click", (event) => {

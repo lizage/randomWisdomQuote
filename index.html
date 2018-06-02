@@ -1,73 +1,110 @@
-    <!DOCTYPE html>
-    <html lang="eng">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Random wisdom quote</title>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" 
-            integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
-            <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
-            <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-            <link rel="stylesheet" href="main.css">
-            <link rel="stylesheet" href="lightTheme.css" id="theme">
-            <!-- <link rel="stylesheet" href="darkTheme.css"> -->
-    </head>
-    <body>
-        <div class="share_options share_hide">
-            <div>
-                <button id="share_mail">
-                    <i class="far fa-envelope fa-2x"></i>
-                </button>
-                <button id="share_wh">
-                    <i class="fab fa-whatsapp fa-2x"></i>
-                </button>
-                <button id="share_fb">
-                    <i class="fab fa-facebook-f fa-2x"></i>
-                </button>
-                <button id="share_tw">
-                    <i class="fab fa-twitter fa-2x"></i>
-                </button>
-                <button id="share_pin">
-                    <i class="fab fa-pinterest-p fa-2x"></i>
-                </button>
-                <button class="close_window">
-                    <i class="fas fa-times fa-xs"></i>
-                </button>
-            </div>
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Random wisdom quote</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" 
+        integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" 
+        crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+        <link rel="stylesheet" href="main-new.css">
+</head>
+<body>
+    <div class="current_quote">
+        <div class="quote">
+            Fears are nothing more than a state of mind.
         </div>
-        <div class="wrapper">
-            <div class="menu_wrapper">
-                <div class="menu_theme">
-                    <button id="toggle_theme">
-                            <i class="fa fa-paint-brush fa-sm"></i>
-                    </button>
-                </div>
-                <div class="menu_refresh">
-                    <button id="load_quote">
-                            <i class="fa fa-sm">&#xf021;</i>
-                    </button>
-                </div>
-            </div>
-            <!-- <div class="mandala mandala_bottom">
-                <div><div><div><div></div></div></div></div>
-            </div> -->
-            <div class="quotes_wrapper">
-                <div class="single_quote_wrapper quote_hide" id="current_quote">
-                    <div class="quote_bground">
-                        <div class="quote"></div>
-                        <div class="author"></div>
-                    </div>
-                    <div class="buttons">
-                        <button id="pin_quote">
-                                <i class="fas fa-thumbtack fa-sm" data-fa-transform="rotate-30"></i>
-                        </button>
-                        <button class="share_current_quote">
-                                <i class="fas fa-share-alt fa-sm"></i>
-                        </button>
-                    </div>
-                </div>              
-            </div>
+        <div class="author">
+            Napoleon Hill
         </div>
-    </body>
-    <script src="main.js"></script>
-    </html>
+        <button>
+            <i class="fas fa-thumbtack fa-sm" data-fa-transform="rotate-30"></i>
+        </button>
+        <button>
+            <i class="fas fa-share-alt fa-sm"></i>
+        </button>
+    </div>
+    <br>
+    <div class="menu">
+        <button>
+            <i class="fa fa-paint-brush fa-sm"></i>
+        </button>
+        <button>
+            <i class="fa fa-lg">&#xf021;</i>
+        </button>
+        <button>
+            <i class="far fa-star"></i>
+        </button>
+    </div>
+    <!-- <div class="pinned_quotes">
+        my saved quotes:
+        <div class="pinned_qoute_1">
+            <div class="quote">
+                pinned quote 1
+            </div>
+            <div class="author">
+                author 1
+            </div>
+            <br>
+            <button>
+                save quote
+            </button>
+            <button>
+                share quote
+            </button>
+        </div>
+        <div class="pinned_qoute_2">
+            <div class="quote">
+                pinned quote 2
+            </div>
+            <div class="author">
+                author 2
+            </div>
+            <br>
+            <button>
+                save quote
+            </button>
+            <button>
+                share quote
+            </button>
+        </div>
+        <div class="pinned_qoute_3">
+            <div class="quote">
+                pinned quote 3
+            </div>
+            <div class="author">
+                author 3
+            </div>
+            <br>
+            <button>
+                save quote
+            </button>
+            <button>
+                share quote
+            </button>
+        </div>
+    </div>
+    <div class="sharing_options">
+        <button>
+            mail
+        </button>
+        <button>
+            whatsapp
+        </button>
+        <button>
+            facebook
+        </button>
+        <button>
+            twitter
+        </button>
+        <button>
+            pinterest
+        </button>
+    </div>
+    <div class="spinner">
+        spinner
+    </div> -->
+</div>
+</body>
+</html>
