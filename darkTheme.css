@@ -1,84 +1,21 @@
-html, *
-{
-    font-family: 'Roboto Slab', serif;
-}
-
 body
 {
-    color:white;
-    background: linear-gradient(to bottom, #01000e 0%,#2d0660 36%,#020166 66%,#100d3a 100%);
+    color:#0c2d69;
+    background-color: #c3d4f0;
 }
 
-button
+.menu button
 {
-    color:white;
+    box-shadow: 0px 0px 4px 1px rgba(143,155,175,0.5);
+    border:none;
+    background-color: white;
 }
 
-button:hover
+.current_quote
 {
-    color:#a253a5; 
-}
-
-.pinned_quotes_title
-{
-    border: none;
-}
-
-.menu_wrapper div
-{
-    background-color: black;
-    box-shadow: 0px 0px 1px 1px rgba(252, 219, 252, 1);
-}
-
-.share_options
-{
-    background: rgba(255, 255, 255, 0.6);
-}
-
-.share_options div
-{
-    background-color: #333333;
-}
-
-.quote_bground, .pinned_quote_bground
-{
-    background-color: black;
-    box-shadow: 0px 0px 1px 1px rgba(191, 148, 191, 1);
-}
-
-.errMsg
-{
-    color:#a253a5; 
-}
-
-div.mandala_bottom div
-{
-    border: dotted 7px rgba(252, 219, 252, 0.5);
-    opacity: 0.8;
-}
-
-.m_inner1
-{
-    border-bottom: solid 5px #2b1e90;
-    border-left: solid 5px #2b1e90;
-}
-
-.m_inner2
-{
-    border-color: #686cc5;
-}
-
-.m_inner3
-{
-    border-bottom: dotted 6px #a253a5;
-    border-right: dotted 6px #a253a5;
-}
-
-@media screen and (min-width: 800px) 
-{
-    div.mandala_bottom div
-    {
-        border: dotted 7px #4a43c2;
-        opacity: 0.6;
-    }  
+    border-radius: 0.2rem;
+    background-color: white;
+    margin: 0.5rem;
+    box-shadow: 0px 0px 4px 1px rgba(143,155,175,0.5);
+    width: calc(100% - 1.6rem);
 }

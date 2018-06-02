@@ -21,11 +21,15 @@ function newNode(node, class_arr, id, parent, html) {
     return new_node;
   }
   
-function buildSpinner() {
-  const spinner = newNode('div', ['spinner', 'spinner_show'], '', $('.current_quote'));
+
+function buildMandala() {
+  const mandala_top_div = newNode('div', ['mandala', 'mandala_top', 'spinner_show']);
+  $('.menu_wrapper').insertAdjacentElement('afterend', mandala_top_div);
   for(let i=0; i<7; i++) {
-    const empty_div = newNode('div', [], '', spinner);
-    const another_empty_div = newNode('div', [], '', empty_div);
+    const m_div = newNode('div', [], '', mandala_top_div);
+    for(let j=1; j<4; j++) {
+      const m_inner = newNode('div', ['m_inner' + j], '', m_div);
+    }
   }
 }
 
@@ -42,8 +46,8 @@ function classTogglr(target,class1,class2)
 }
 
 function toggleWaitingMode() {
-  classTogglr('.current_quote div','quote_show','quote_hide');
-  classTogglr('.spinner','spinner_hide','spinner_show');
+  classTogglr('#current_quote','quote_show','quote_hide');
+  classTogglr('.mandala_top','spinner_hide','spinner_show');
 }
 
 // id starts with '_' bc DOM object id can't start with a digit
@@ -59,39 +63,23 @@ function Quote(text,author,id) {
   this.id = id;
 }
 
-// another boilerplate
-function hideButtonsOnError(isOK) {
-  if (isOK) {
-    $('.menu > .theme').style.display = "block";
-    $('.menu > .pin').style.display = "block";
-    $('.menu > .share').style.display = "block";
-  }
-  else
-  {
-    $('.menu > .theme').style.display = "none";
-    $('.menu > .pin').style.display = "none";
-    $('.menu > .share').style.display = "none";
-  }
-}
-
-
 function handleResponse(response) {
   // Error case
   if (response.charAt(0) == "C") {
-    $('.current_quote > div > .quote').innerHTML = response;
-    $('.current_quote > div > .author').innerHTML = ""; 
-    $('.current_quote > div > .quote').classList.add('errMsg');
-    hideButtonsOnError(false);
+    $('#current_quote > .quote_bground > .quote').innerHTML = response;
+    $('#current_quote > .quote_bground > .author').innerHTML = "";
+    $('#current_quote > .buttons').style.display = "none";
+    $('#current_quote > .quote_bground > .quote').classList.add('errMsg');
   }
   // Response OK case
   else {
     const quoteObj = JSON.parse(response);
     currentQuote = new Quote(quoteObj.quoteText, quoteObj.quoteAuthor, getUniqueId(quoteObj));
-    $('.current_quote > div > .quote').innerHTML = currentQuote.text;
-    $('.current_quote > div > .author').innerHTML = currentQuote.author;
-    $('.current_quote > div > .quote').classList.remove('errMsg');
-    hideButtonsOnError(true);
-    //renderCurrentSharing();
+    $('#current_quote > .quote_bground > .quote').innerHTML = currentQuote.text;
+    $('#current_quote > .quote_bground > .author').innerHTML = currentQuote.author;
+    $('#current_quote > .buttons').style.display = "block";
+    $('#current_quote > .quote_bground > .quote').classList.remove('errMsg');
+    renderCurrentSharing();
   }
 }
 
@@ -295,36 +283,34 @@ function init() {
   // load items from local storage and push them to pinnedQuotes array 
   // also display them on screen
 
+  //buildMandala();
+  getQuote();
 
-
-  buildSpinner();
-   getQuote();
-
-  // $('#load_quote').addEventListener("click", (event) => {
-  //   $('#pin_quote').disabled = false;
-  //   toggleWaitingMode();
-  //   getQuote();
-  // });
+  $('#load_quote').addEventListener("click", (event) => {
+    $('#pin_quote').disabled = false;
+    toggleWaitingMode();
+    getQuote();
+  });
   
-  // $('#pin_quote').addEventListener("click", (event) => {
-  //   $('#pin_quote').disabled = true;
-  //   renderPinnedQuotes();
-  // });
+  $('#pin_quote').addEventListener("click", (event) => {
+    $('#pin_quote').disabled = true;
+    renderPinnedQuotes();
+  });
 
-  // $('.close_window').addEventListener("click", (e) => {
-  //   classTogglr('.share_options','share_hide','share_show');
-  // });
+  $('.close_window').addEventListener("click", (e) => {
+    classTogglr('.share_options','share_hide','share_show');
+  });
 
-  // window.addEventListener('scroll', function(){
-  //    $('.mandala_bottom div').classList.add('scroll_animation');
-  //    setTimeout(() => {
-  //     $('.mandala_bottom div').classList.remove('scroll_animation');
-  //    }, 2500)
-  // });
+  window.addEventListener('scroll', function(){
+     $('.mandala_bottom div').classList.add('scroll_animation');
+     setTimeout(() => {
+      $('.mandala_bottom div').classList.remove('scroll_animation');
+     }, 2500)
+  });
 
-  // $('#toggle_theme').addEventListener("click", (e) => {
-  //   toggleTheme();
-  // });
+  $('#toggle_theme').addEventListener("click", (e) => {
+    toggleTheme();
+  });
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {

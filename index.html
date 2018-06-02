@@ -9,29 +9,17 @@
         crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Prata" rel="stylesheet">
         <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="lightTheme.css" id="theme">
 </head>
 <body>
     <div class="current_quote">
-        <div>
-            <div class="quote">
-                Fears are nothing more than a state of mind.                 
-            </div>
-            <div class="author">
-                Napoleon Hill
-            </div>
-            <div class="spinner">
-                <div><div></div></div>
-                <div><div></div></div>
-                <div><div></div></div>
-                <div><div></div></div>
-                <div><div></div></div>
-                <div><div></div></div>
-                <div><div></div></div>
-            </div>
+        <div class="quote_hide">
+            <div class="quote"></div>
+            <div class="author"></div>
         </div>
     </div>
     <div class="menu">
-        <button>
+        <button class="theme">
             <i class="fa fa-paint-brush fa-sm"></i>
         </button>
         <button class="pin">
@@ -40,7 +28,7 @@
         <button class="share">
             <i class="fas fa-share-alt fa-sm"></i>
         </button>
-        <button>
+        <button class="load">
             <i class="fa fa-lg">&#xf021;</i>
         </button>
     </div>
@@ -57,7 +45,7 @@
             <div class="author">
                 Napoleon Hill
             </div>
-            <button class="pin">
+            <button class="remove">
                 <i class="fas fa-times"></i>
             </button>
             <button class="share">
@@ -71,7 +59,7 @@
             <div class="author">
                 Napoleon Hill
             </div>
-            <button class="pin">
+            <button class="remove">
                 <i class="fas fa-times"></i>
             </button>
             <button class="share">
@@ -81,25 +69,26 @@
     </div>
     <div class="share_options">
         <div>
-            <button id="share_mail">
+            <button class="share_mail">
                 <i class="far fa-envelope fa-2x"></i>
             </button>
-            <button id="share_wh">
+            <button class="share_wh">
                 <i class="fab fa-whatsapp fa-2x"></i>
             </button>
-            <button id="share_fb">
+            <button class="share_fb">
                 <i class="fab fa-facebook-f fa-2x"></i>
             </button>
-            <button id="share_tw">
+            <button class="share_tw">
                 <i class="fab fa-twitter fa-2x"></i>
             </button>
-            <button id="share_pin">
+            <button class="share_pin">
                 <i class="fab fa-pinterest-p fa-2x"></i>
             </button>
-            <button class="close_window">
+            <button class="close">
                 <i class="fas fa-times"></i>
             </button>
         </div>
     </div>
 </body>
+<script src="main.js"></script>
 </html>

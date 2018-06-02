@@ -12,11 +12,16 @@ body
     text-align: center;
     width: 100vw;
     height: 100vh;
-    color:#0c2d69;
     overflow-x: hidden;
 }
 
-/* generic selectors */
+.errMsg
+{
+    color:#999999;
+    text-align: center;
+}
+
+/* buttons */
 
 button
 {
@@ -42,12 +47,11 @@ button:focus
 .current_quote
 {
     position: relative;
-    padding: 1rem;
+    padding: 2rem;
+    min-height: 42vh;
     text-align: center; 
-    background-color: #0c2d69;
     display: flex;
     justify-content: space-around;
-    color: white;
     transition: padding 100ms ease;
 }
 
@@ -115,6 +119,7 @@ button:focus
     overflow-y: hidden; 
     padding-bottom: 3rem;
     -webkit-overflow-scrolling: touch;
+    display: none;
 }
 
 -webkit-scrollbar {
@@ -134,7 +139,8 @@ button:focus
     max-width: 500px;
 }
 
-.pinned_quotes > div .quote, .pinned_quotes > div .author
+.pinned_quotes > div .quote, 
+.pinned_quotes > div .author
 {
     font-size: 0.8rem;
 }
@@ -162,7 +168,6 @@ button:focus
 .share_options
 {
     position: fixed;
-    background: rgba(12,45,105,0.5);
     top:0;
     left: 0;
     width: 100vw;
@@ -171,6 +176,7 @@ button:focus
     display: flex;
     align-items: center;
     justify-content: center; 
+    display: none;
 }
 
 .share_options div
@@ -184,7 +190,6 @@ button:focus
     flex-wrap: nowrap;
     justify-content: space-between;
     position: relative;
-    background-color: white;
 }
 
 .share_options div button
@@ -199,7 +204,7 @@ button:focus
     margin: 0.5rem 0.4rem 0.5rem 0;
 }
 
-.share_options div .close_window
+.share_options div .close
 {
     position: absolute;
     margin: 0;
@@ -209,11 +214,10 @@ button:focus
     width: 1.6rem;
     border:solid 1px;
     border-radius: 0.8rem;
-    background-color:white;
     transition: font-size 100ms ease-in;
 }
 
-.share_options div .close_window:hover
+.share_options div .close:hover
 {
     margin: 0;
     font-size: 1.2rem;
@@ -223,7 +227,6 @@ button:focus
 
 .spinner
 {
-    display: none;
     position: absolute;
     width: 50%;
     height: 50%;
@@ -231,6 +234,7 @@ button:focus
     right: 25%;
     z-index: 1;
     animation: spinner 20s linear infinite;
+    /* display: none; */
 }
 
 .spinner div
@@ -253,7 +257,6 @@ button:focus
     background: transparent;
     border-left: none;
     animation: spinner 5s linear reverse infinite;
-    box-shadow: 5px 4px 0 1px rgba(255,255,255,1);
 }
 
 .spinner div + div
@@ -286,6 +289,20 @@ button:focus
     transform: rotate(309deg);
 }
 
+/* animation trigger classes */
+
+.spinner_show,
+.quote_show
+{
+    display: block;
+}
+
+.spinner_hide,
+.quote_hide
+{
+    display: none;
+}
+
 /* animations */
 
 @keyframes fadein 
@@ -313,6 +330,18 @@ button:focus
 }
 
 @keyframes spinner
+{
+    0%
+    {
+        transform: rotate(-180deg);  
+    }
+    100%
+    {
+        transform: rotate(180deg);  
+    }
+}
+
+@keyframes spinner_wide
 {
     0%
     {
@@ -346,6 +375,34 @@ button:focus
     .current_quote
     {
         padding: 2.5rem 1rem 2.5rem 1rem;
+    }
+
+    .share_options div
+    {
+        flex-flow: row;
+        width: 60%;
+        max-width: 550px;
+        margin-top: 2rem;
+    }
+    
+    .share_options div button
+    {
+        margin: 0.2rem;
+    }
+    
+    .share_options div button:hover
+    { 
+        margin: 0 0.2rem 0.4rem 0.2rem;
+    }
+
+    .spinner
+    {
+        animation: spinner_wide 20s linear infinite;
+    }
+
+    .spinner div > div
+    {
+        animation: spinner_wide 5s linear reverse infinite;
     }
 }
 

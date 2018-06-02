@@ -1,81 +1,37 @@
-html, *
-{
-    font-family: 'Fredericka the Great', cursive;
-}
 
 body
 {
-    color:#430f6f;
-    /* background: linear-gradient(to bottom, #7989bd 0%,#b0bce8 31%,#5e7fc4 74%,#4967a5 100%); */
-    background-color: #c3d4f0;
-}
-
-button
-{
-    color:#430f6f;
-}
-
-button:hover
-{
-    color:#949911; 
-}
-
-.pinned_quotes_title
-{
-    border: none;
-}
-
-.menu_wrapper div
-{
+    color:#0c2d69;
     background-color: white;
-    box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.7);
+}
+
+.current_quote
+{
+    background-color: #0c2d69;
+    color: white;
 }
 
 .share_options
 {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(12,45,105,0.5);
 }
 
 .share_options div
 {
     background-color: white;
-    box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.9);
 }
 
-.quote_bground, .pinned_quote_bground
+.share_options div .close
 {
-    background-color: white;
-    box-shadow: 0px 0px 10px 1px rgba(153,153,153,0.7);
+    background-color:white;
 }
 
-.errMsg
+.spinner div > div
 {
-    color:#949911; 
+    box-shadow: 2px 2px 0 1px rgba(255,255,255,1);
 }
 
-div.mandala_bottom div
-{
-    border: dotted 7px white;
-    opacity: 0.8;
-}
 
-.m_inner1
-{
-    border-bottom: solid 5px #2f4583;
-    border-left: solid 5px #2f4583;
-}
 
-.m_inner3
-{
-    border-bottom: dotted 6px #5e5caa;
-    border-right: dotted 6px #5e5caa;
-}
 
-@media screen and (min-width: 800px) 
-{
 
-    div.mandala_bottom div
-    {
-        opacity: 0.6;
-    }
-}
