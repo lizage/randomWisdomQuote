@@ -2,8 +2,6 @@ html, *
 {
     box-sizing: border-box;
     font-size: 25px;
-    margin: 0;
-    padding: 0;
 }
 
 .change_theme
@@ -15,14 +13,11 @@ body
 {
     display: flex;
     flex-flow: row;
-    flex-wrap: nowrap;
     justify-content: space-around;
-    background-attachment: fixed;
+    /* background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+    background-size: cover; */
 }
 
 /* generic selectors */

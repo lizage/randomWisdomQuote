@@ -6,7 +6,8 @@ html, *
 body
 {
     color:#430f6f;
-    background: linear-gradient(to bottom, #7989bd 0%,#b0bce8 31%,#5e7fc4 74%,#4967a5 100%);
+    /* background: linear-gradient(to bottom, #7989bd 0%,#b0bce8 31%,#5e7fc4 74%,#4967a5 100%); */
+    background-color: #c3d4f0;
 }
 
 button
