@@ -13,6 +13,7 @@ body
     width: 100vw;
     height: 100vh;
     color:#0c2d69;
+    overflow-x: hidden;
 }
 
 /* generic selectors */
@@ -23,12 +24,12 @@ button
     border: none;
     cursor: pointer;
     transition: font-size 150ms ease;
+    color:#0c2d69;
 }
 
 button:hover
 {
-    color:#949911; 
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 button:focus
@@ -47,6 +48,7 @@ button:focus
     display: flex;
     justify-content: space-around;
     color: white;
+    transition: padding 100ms ease;
 }
 
 .current_quote div
@@ -89,12 +91,10 @@ button:focus
 .menu button
 {
     margin: 0 0.5rem 0 0;
-    background-color: white;
     width: 2rem;
     height: 2rem;
     border-radius: 1rem;
     border:solid 1px;
-    /* box-shadow: 0px 0px 4px 1px rgba(143,155,175,0.5); */
 }
 
 .menu button + button + button + button
@@ -157,6 +157,68 @@ button:focus
     left: 1.7rem;
 }
 
+/* sharing options */
+
+.share_options
+{
+    position: fixed;
+    background: rgba(12,45,105,0.5);
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3; 
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.share_options div
+{
+    border-radius: 0.2rem;
+    z-index: 4;
+    margin: 1rem 0.5rem 0.5rem 0.5rem;
+    padding:0.8rem;
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    position: relative;
+    background-color: white;
+}
+
+.share_options div button
+{
+    margin: 0.5rem 0.2rem 0.5rem 0.2rem;
+    transition: margin 100ms ease-in;
+}
+
+.share_options div button:hover
+{
+    font-size: 1rem; 
+    margin: 0.5rem 0.4rem 0.5rem 0;
+}
+
+.share_options div .close_window
+{
+    position: absolute;
+    margin: 0;
+    top:-0.8rem;
+    left: -0.8rem;
+    height: 1.6rem;
+    width: 1.6rem;
+    border:solid 1px;
+    border-radius: 0.8rem;
+    background-color:white;
+    transition: font-size 100ms ease-in;
+}
+
+.share_options div .close_window:hover
+{
+    margin: 0;
+    font-size: 1.2rem;
+}
+
 /* spinner */
 
 .spinner
@@ -174,24 +236,24 @@ button:focus
 .spinner div
 {
     position: absolute;
-    width: 40%;
-    height: 40%;
+    width: 30%;
+    height: 60%;
     max-width:5rem;
     max-height:5rem;
     top: 50%;
     right: 50%;
     border-radius:50%;
+    border-left: solid 5px white;
     transform-origin: top right;
-    background: rgba(255, 255, 255, 0.3);
 }
 
 .spinner div > div
 {
-    height: 90%;
+    height: 80%;
     background: transparent;
     border-left: none;
     animation: spinner 5s linear reverse infinite;
-    box-shadow: 5px 5px 5px 1px rgba(148,153,17,0.4);
+    box-shadow: 5px 4px 0 1px rgba(255,255,255,1);
 }
 
 .spinner div + div
@@ -278,7 +340,12 @@ button:focus
 {
     .menu
     {
-        padding: 0 22% 0 22%; 
+        padding: 0 30% 0 30%; 
+    }
+
+    .current_quote
+    {
+        padding: 2.5rem 1rem 2.5rem 1rem;
     }
 }
 
