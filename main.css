@@ -433,10 +433,18 @@ button:disabled
         position: relative;
     }
 
+    .menu button + button + button + button
+    {
+        position: relative;
+        top:-2rem;
+        left: 3.5rem;
+    }
+
     .pinned_quotes
     {
        flex-basis: 100%;
        order:1;
+       margin-top: 1rem;
     }
 
     .share_options div
@@ -483,6 +491,12 @@ button:disabled
     .menu
     {
         min-height: 42vh;
+    }
+
+    .menu button + button + button + button
+    {
+        top:1.5rem;
+        left: 0rem;
     }
     
     .share_options div button:active
