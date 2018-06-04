@@ -379,17 +379,32 @@ button:focus
 { 
     .current_quote
     {
-        min-height: 38vh;
+        /* min-height: 50vh; */
+    }
+
+    .quote_wrapper
+    {
+        width: 100%;
+    }
+
+    .menu
+    {
+        top:-2.2rem;
+    }
+
+    .spinner div
+    {
+        visibility: hidden;
+    }
+
+    .spinner div > div
+    {
+        visibility: visible;
     }
 }
 
 @media screen and (min-width: 800px) 
-{
-    button:hover
-    {
-        font-size: 1.2rem;
-    }
-    
+{    
     .menu
     {
         padding: 0 30% 0 30%; 
@@ -407,16 +422,6 @@ button:focus
         min-height: 38vh;
         animation: renderQuoteWide 650ms cubic-bezier(.75,.25,.63,.95);
     } 
-
-    .spinner div
-    {
-        visibility: hidden;
-    }
-
-    .spinner div > div
-    {
-        visibility: visible;
-    }
 
     .share_options div
     {
