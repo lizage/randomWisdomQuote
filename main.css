@@ -410,13 +410,13 @@ button:focus
     }
 }
 
-/* @media screen and (orientation:landscape) 
+@media screen and (orientation:landscape) 
 { 
-    .menu
+    .current_quote
     {
-        border:solid 1px red;
+        min-height: 35vh;
     }
-} */
+}
 
 
 
