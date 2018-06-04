@@ -42,7 +42,7 @@ function classTogglr(target,class1,class2)
 }
 
 function toggleWaitingMode() {
-  classTogglr('.current_quote div','quote_show','quote_hide');
+  classTogglr('.quote_wrapper','quote_show','quote_hide');
   classTogglr('.spinner','spinner_hide','spinner_show');
 }
 
@@ -62,15 +62,15 @@ function Quote(text,author,id) {
 // another boilerplate
 function hideButtonsOnError(isOK) {
   if (isOK) {
-    $('.menu > .theme').style.display = "block";
-    $('.menu > .pin').style.display = "block";
-    $('.menu > .share').style.display = "block";
+    $('.menu > .theme').style.visibility = "visible";
+    $('.menu > .pin').style.visibility = "visible";
+    $('.menu > .share').style.visibility = "visible";
   }
   else
   {
-    $('.menu > .theme').style.display = "none";
-    $('.menu > .pin').style.display = "none";
-    $('.menu > .share').style.display = "none";
+    $('.menu > .theme').style.visibility = "hidden";
+    $('.menu > .pin').style.visibility = "hidden";
+    $('.menu > .share').style.visibility = "hidden";
   }
 }
 
@@ -300,11 +300,11 @@ function init() {
   buildSpinner();
    getQuote();
 
-  // $('#load_quote').addEventListener("click", (event) => {
-  //   $('#pin_quote').disabled = false;
-  //   toggleWaitingMode();
-  //   getQuote();
-  // });
+  $('.load').addEventListener("click", (event) => {
+    //$('#pin_quote').disabled = false;
+    toggleWaitingMode();
+    getQuote();
+  });
   
   // $('#pin_quote').addEventListener("click", (event) => {
   //   $('#pin_quote').disabled = true;

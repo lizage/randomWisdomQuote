@@ -15,13 +15,6 @@ body
     overflow-x: hidden;
 }
 
-.errMsg
-{
-    font-size: 0.8rem;
-    color:#999999;
-    text-align: center;
-}
-
 /* buttons */
 
 button
@@ -48,19 +41,20 @@ button:focus
 .current_quote
 {
     position: relative;
-    padding: 2rem 2rem 3rem 2rem;
-    min-height: 50vh;
+    min-height: 52vh;
     text-align: center; 
     display: flex;
     justify-content: space-around;
-    transition: padding 100ms ease;
+    padding: 0;
 }
 
-.current_quote div
+.quote_wrapper
 {
     text-align: left;
     max-width: 950px;
     font-size:1.1rem;
+    padding: 2rem 2rem 3rem 2rem;
+    animation: renderQuote 600ms cubic-bezier(.05,.62,.52,1.23);
 }
 
 .current_quote .author
@@ -251,13 +245,13 @@ button:focus
     top: 50%;
     right: 50%;
     border-radius:50%;
-    border-left: solid 2px white;
+    border-left: solid 2px;
     transform-origin: top right;
 }
 
 .spinner div > div
 {
-    height: 80%;
+    height: 50%;
     background: transparent;
     border-left: none;
     animation: spinner 5s linear reverse infinite;
@@ -369,6 +363,18 @@ button:focus
     }
 }
 
+@keyframes renderQuoteWide
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
+}
+
 @media screen and (min-width: 800px) 
 {
     .menu
@@ -378,7 +384,24 @@ button:focus
 
     .current_quote
     {
-        padding: 2.5rem 1rem 2.5rem 1rem;
+        margin-top: 1rem;
+    }
+
+    .quote_wrapper
+    {
+        width: 950px;
+        border-radius: 0.2rem;
+        animation: renderQuoteWide 650ms cubic-bezier(.75,.25,.63,.95);
+    } 
+
+    .spinner div
+    {
+        visibility: hidden;
+    }
+
+    .spinner div > div
+    {
+        visibility: visible;
     }
 
     .share_options div
@@ -398,23 +421,13 @@ button:focus
     { 
         margin: 0 0.2rem 0.4rem 0.2rem;
     }
-
-    .spinner
-    {
-        animation: spinner_wide 20s linear infinite;
-    }
-
-    .spinner div > div
-    {
-        animation: spinner_wide 5s linear reverse infinite;
-    }
 }
 
 @media screen and (orientation:landscape) 
 { 
     .current_quote
     {
-        min-height: 35vh;
+        min-height: 38vh;
     }
 }
 
