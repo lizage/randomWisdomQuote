@@ -385,11 +385,12 @@ button:focus
     .quote_wrapper
     {
         width: 100%;
+        animation: renderQuoteWide 650ms cubic-bezier(.75,.25,.63,.95);
     }
 
     .menu
     {
-        top:-3rem;
+        top:-4.5rem;
     }
 
     .spinner div
@@ -419,8 +420,7 @@ button:focus
     {
         width: 950px;
         border-radius: 0.2rem;
-        min-height: 38vh;
-        animation: renderQuoteWide 650ms cubic-bezier(.75,.25,.63,.95);
+        min-height: 38vh;  
     } 
 
     .share_options div
