@@ -379,7 +379,7 @@ button:focus
 { 
     .current_quote
     {
-        /* min-height: 50vh; */
+        height: 100vh;
     }
 
     .quote_wrapper
@@ -389,7 +389,7 @@ button:focus
 
     .menu
     {
-        top:-2.2rem;
+        top:-3rem;
     }
 
     .spinner div
