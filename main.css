@@ -400,7 +400,7 @@ button:disabled
     .current_quote
     {
         flex-basis: 80%;
-        min-height: 45vh;
+        height: 100vh;
         flex-grow: 1;
         justify-content: flex-start;
         order:1;
@@ -418,8 +418,7 @@ button:disabled
     {
         flex-basis: 20%;
         flex-flow: column;
-        min-height: 45vh;
-        background-color: #0c2d69; /* move to theme css */
+        height: 100vh;
         padding: 0;
         margin: 0;
         top: 0;
@@ -476,6 +475,16 @@ button:disabled
 
 @media screen and (orientation:landscape) and (min-width: 800px) 
 {    
+    .current_quote
+    {
+        min-height: 45vh;
+    }
+
+    .menu
+    {
+        min-height: 45vh;
+    }
+    
     .share_options div button:active
     {
         margin: 0.2rem;
