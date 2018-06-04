@@ -391,13 +391,13 @@ button:focus
 
     .menu
     {
-        top:-5rem;
+        top:-5.2rem;
     }
 
     .spinner div
     {
         visibility: hidden;
-        top:10%;
+        bottom:50%;
     }
 
     .spinner div > div
