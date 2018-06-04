@@ -379,7 +379,7 @@ button:focus
 { 
     .current_quote
     {
-        height: 100vh;
+        min-height: 100vh;
     }
 
     .quote_wrapper
@@ -397,7 +397,7 @@ button:focus
     .spinner div
     {
         visibility: hidden;
-        top:40%;
+        top:10%;
     }
 
     .spinner div > div
@@ -411,11 +411,13 @@ button:focus
     .menu
     {
         padding: 0 30% 0 30%; 
+        top:-1rem;
     }
 
     .current_quote
     {
         margin-top: 1rem;
+        min-height: 38vh;
     }
 
     .quote_wrapper
