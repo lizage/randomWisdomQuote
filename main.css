@@ -26,8 +26,7 @@ button
     color:#0c2d69;
 }
 
-button:active,
-button:hover
+button:active
 {
     font-size: 1.2rem;
 }
@@ -386,6 +385,11 @@ button:focus
 
 @media screen and (min-width: 800px) 
 {
+    button:hover
+    {
+        font-size: 1.2rem;
+    }
+    
     .menu
     {
         padding: 0 30% 0 30%; 
