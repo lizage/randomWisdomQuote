@@ -17,6 +17,7 @@ body
 
 .errMsg
 {
+    font-size: 0.8rem;
     color:#999999;
     text-align: center;
 }
@@ -47,8 +48,8 @@ button:focus
 .current_quote
 {
     position: relative;
-    padding: 2rem;
-    min-height: 42vh;
+    padding: 2rem 2rem 3rem 2rem;
+    min-height: 50vh;
     text-align: center; 
     display: flex;
     justify-content: space-around;
@@ -85,11 +86,13 @@ button:focus
 .menu
 {
     height: 2rem;
-    margin: 1.5rem 0 2.5rem 0;
+    margin: 0 0 2.5rem 0;
     padding: 0 5% 0 5%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    position: relative;
+    top:-1rem;
 }
 
 .menu button
@@ -99,6 +102,7 @@ button:focus
     height: 2rem;
     border-radius: 1rem;
     border:solid 1px;
+    background-color: white;
 }
 
 .menu button + button + button + button
@@ -119,7 +123,7 @@ button:focus
     overflow-y: hidden; 
     padding-bottom: 3rem;
     -webkit-overflow-scrolling: touch;
-    display: none;
+    /* display: none; */
 }
 
 -webkit-scrollbar {
@@ -183,8 +187,8 @@ button:focus
 {
     border-radius: 0.2rem;
     z-index: 4;
-    margin: 1rem 0.5rem 0.5rem 0.5rem;
-    padding:0.8rem;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    padding: 1.2rem 2.2rem 1.2rem 2.2rem;
     display: flex;
     flex-flow: column;
     flex-wrap: nowrap;
@@ -230,24 +234,24 @@ button:focus
     position: absolute;
     width: 50%;
     height: 50%;
-    top: 25%;
+    top: 20%;
     right: 25%;
     z-index: 1;
     animation: spinner 20s linear infinite;
-    /* display: none; */
+    display: none;
 }
 
 .spinner div
 {
     position: absolute;
-    width: 30%;
-    height: 60%;
+    width: 40%;
+    height: 40%;
     max-width:5rem;
     max-height:5rem;
     top: 50%;
     right: 50%;
     border-radius:50%;
-    border-left: solid 5px white;
+    border-left: solid 2px white;
     transform-origin: top right;
 }
 
@@ -333,11 +337,11 @@ button:focus
 {
     0%
     {
-        transform: rotate(-180deg);  
+        transform: rotate(-130deg);  
     }
     100%
     {
-        transform: rotate(180deg);  
+        transform: rotate(230deg);  
     }
 }
 
@@ -406,13 +410,13 @@ button:focus
     }
 }
 
-@media screen and (orientation:landscape) 
+/* @media screen and (orientation:landscape) 
 { 
     .menu
     {
         border:solid 1px red;
     }
-}
+} */
 
 
 
