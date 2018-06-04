@@ -36,7 +36,23 @@ button:focus
     outline-width: 0;
 }
 
+button:disabled
+{
+    color:#999999;
+    cursor: auto;
+    transition: none;
+}
+
 /* current qoute */
+
+.errMsg div.quote_wrapper
+{
+    text-align: center;
+    color:#999999;
+    background-color: transparent;
+    border: none;
+    border: solid 1px #999999;
+}
 
 .current_quote
 {
@@ -54,7 +70,7 @@ button:focus
     max-width: 950px;
     font-size:1.1rem;
     padding: 2rem 2rem 3rem 2rem;
-    animation: renderQuote 600ms cubic-bezier(.05,.62,.52,1.23);
+    animation: slideFromTop 600ms cubic-bezier(.05,.62,.52,1.23);
 }
 
 .current_quote .author
@@ -174,7 +190,7 @@ button:focus
     display: flex;
     align-items: center;
     justify-content: center; 
-    display: none;
+    animation: fadeout 650ms cubic-bezier(.75,.25,.63,.95);
 }
 
 .share_options div
@@ -196,7 +212,7 @@ button:focus
     transition: margin 100ms ease-in;
 }
 
-.share_options div button:hover
+.share_options div button:active
 {
     font-size: 1rem; 
     margin: 0.5rem 0.4rem 0.5rem 0;
@@ -215,7 +231,7 @@ button:focus
     transition: font-size 100ms ease-in;
 }
 
-.share_options div .close:hover
+.share_options div .close:focus
 {
     margin: 0;
     font-size: 1.2rem;
@@ -295,8 +311,15 @@ button:focus
     display: block;
 }
 
+.share_show
+{
+    display: flex;
+    animation: fadein 650ms cubic-bezier(.75,.25,.63,.95);
+}
+
 .spinner_hide,
-.quote_hide
+.quote_hide,
+.share_hide
 {
     display: none;
 }
@@ -351,7 +374,7 @@ button:focus
     }
 }
 
-@keyframes renderQuote
+@keyframes slideFromTop
 {
     from
     {
@@ -360,18 +383,6 @@ button:focus
     to
     {
         transform: translate3d(0, 0, 0);
-    }
-}
-
-@keyframes renderQuoteWide
-{
-    from
-    {
-        opacity: 0;
-    }
-    to
-    {
-        opacity: 1;
     }
 }
 
@@ -385,7 +396,7 @@ button:focus
     .quote_wrapper
     {
         width: 100%;
-        animation: renderQuoteWide 650ms cubic-bezier(.75,.25,.63,.95);
+        animation: fadein 650ms cubic-bezier(.75,.25,.63,.95);
         font-size: 0.8rem;
     }
 
@@ -394,10 +405,18 @@ button:focus
         top:-6rem;
     }
 
+    .share_options div
+    {
+        flex-flow: row;
+        width: 60%;
+        max-width: 550px;
+        top:-3rem;
+    }
+
     .spinner div
     {
         visibility: hidden;
-        top:1rem;
+        /* todo later: fix the spinner position at landscape on mobile */
     }
 
     .spinner div > div
@@ -408,6 +427,8 @@ button:focus
 
 @media screen and (min-width: 800px) 
 {    
+    /* todo later: add bground image on web only */
+    
     .menu
     {
         padding: 0 30% 0 30%; 
@@ -428,14 +449,6 @@ button:focus
         font-size: 1rem;
     } 
 
-    .share_options div
-    {
-        flex-flow: row;
-        width: 60%;
-        max-width: 550px;
-        margin-top: 2rem;
-    }
-    
     .share_options div button
     {
         margin: 0.2rem;

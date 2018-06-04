@@ -29,10 +29,28 @@ function buildSpinner() {
   }
 }
 
+// bring random quote from API
+function getQuote() {
+  const key = randomFixedInteger(6);
+  const proxyurl = "https://cors-anywhere.herokuapp.com/";
+  const url = `http://api.forismatic.com/api/1.0/?method=getQuote&key=${key}&format=json&lang=en`; 
+  fetch(proxyurl + url) 
+  .then(response => response.text())
+  .then(contents => {toggleWaitingMode(); handleResponse(contents);})
+  .catch(() => { 
+    handleResponse("Can’t access API, please try again");
+  })
+}
+
 // generate API key
 function randomFixedInteger(length) {
   return 
     Math.floor(Math.pow(10, length-1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length-1) - 1));
+}
+
+function toggleWaitingMode() {
+  classTogglr('.quote_wrapper','quote_show','quote_hide');
+  classTogglr('.spinner','spinner_hide','spinner_show');
 }
 
 function classTogglr(target,class1,class2)
@@ -41,22 +59,24 @@ function classTogglr(target,class1,class2)
   $(target).classList.toggle(class2);
 }
 
-function toggleWaitingMode() {
-  classTogglr('.quote_wrapper','quote_show','quote_hide');
-  classTogglr('.spinner','spinner_hide','spinner_show');
-}
-
-// id starts with '_' bc DOM object id can't start with a digit
-function getUniqueId(quoteObj) {
-  const link_arr = quoteObj.quoteLink.split('/'); 
-  return '_' + link_arr[link_arr.length-2];
-}
-
-// Quote object constructor
-function Quote(text,author,id) {
-  this.text = text;
-  this.author = author;
-  this.id = id;
+function handleResponse(response) {
+  // Error case
+  if (response.charAt(0) == "C") {
+    $('.current_quote > div > .quote').innerHTML = response;
+    $('.current_quote > div > .author').innerHTML = ""; 
+    $('.current_quote').classList.add('errMsg');
+    hideButtonsOnError(false);
+  }
+  // Response OK case
+  else {
+    const quoteObj = JSON.parse(response);
+    currentQuote = new Quote(quoteObj.quoteText, quoteObj.quoteAuthor, getUniqueId(quoteObj));
+    $('.current_quote > div > .quote').innerHTML = currentQuote.text;
+    $('.current_quote > div > .author').innerHTML = currentQuote.author;
+    $('.current_quote').classList.remove('errMsg');
+    hideButtonsOnError(true);
+    renderCurrentSharing();
+  }
 }
 
 // another boilerplate
@@ -74,39 +94,107 @@ function hideButtonsOnError(isOK) {
   }
 }
 
-
-function handleResponse(response) {
-  // Error case
-  if (response.charAt(0) == "C") {
-    $('.current_quote > div > .quote').innerHTML = response;
-    $('.current_quote > div > .author').innerHTML = ""; 
-    $('.current_quote > div > .quote').classList.add('errMsg');
-    hideButtonsOnError(false);
-  }
-  // Response OK case
-  else {
-    const quoteObj = JSON.parse(response);
-    currentQuote = new Quote(quoteObj.quoteText, quoteObj.quoteAuthor, getUniqueId(quoteObj));
-    $('.current_quote > div > .quote').innerHTML = currentQuote.text;
-    $('.current_quote > div > .author').innerHTML = currentQuote.author;
-    $('.current_quote > div > .quote').classList.remove('errMsg');
-    hideButtonsOnError(true);
-    //renderCurrentSharing();
-  }
+// Quote object constructor
+function Quote(text,author,id) {
+  this.text = text;
+  this.author = author;
+  this.id = id;
 }
 
-// bring random quote from API
-function getQuote() {
-  const key = randomFixedInteger(6);
-  const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  const url = `http://api.forismatic.com/api/1.0/?method=getQuote&key=${key}&format=json&lang=en`; 
-  fetch(proxyurl + url) 
-  .then(response => response.text())
-  .then(contents => {toggleWaitingMode(); handleResponse(contents);})
-  .catch(() => { 
-    handleResponse("Can’t access API, please try again");
-  })
+// id starts with '_' bc DOM object id can't start with a digit
+function getUniqueId(quoteObj) {
+  const link_arr = quoteObj.quoteLink.split('/'); 
+  return '_' + link_arr[link_arr.length-2];
 }
+
+function renderCurrentSharing() {
+  let share_button = newNode(
+    'button', 
+    ['share'], 
+    '', 
+    $('.menu'), 
+    `<i class="fas fa-share-alt fa-sm"></i>`
+  );
+  $('.share').parentNode.replaceChild(share_button, $('.share'));
+  $('.share').addEventListener("click", (e) => {
+    let quote = currentQuote.text;
+    let author = currentQuote.author;
+    showSocial(quote, author);
+  }) 
+}
+
+function showSocial(quote, author) {
+  classTogglr('.share_options','share_hide','share_show'); 
+
+  let share_mail = newNode(
+    'button', 
+    ['share_mail'], 
+    '', 
+    $('.share_options div'), 
+    `<i class="far fa-envelope fa-2x"></i>`
+  );
+  $('.share_mail').parentNode.replaceChild(share_mail, $('.share_mail'));
+  $('.share_mail').addEventListener("click", (e) => {
+    return; // todo later
+  });
+
+  let share_wh = newNode(
+    'button', 
+    ['share_wh'], 
+    '', 
+    $('.share_options div'), 
+    `<i class="fab fa-whatsapp fa-2x"></i>`
+  );
+  $('.share_wh').parentNode.replaceChild(share_mail, $('.share_wh'));
+  $('.share_wh').addEventListener("click", (e) => {
+    return; // todo later
+  });
+
+  let share_fb = newNode(
+    'button', 
+    ['share_fb'], 
+    '', 
+    $('.share_options div'), 
+    `<i class="fab fa-facebook-f fa-2x"></i>`
+  );
+  $('.share_fb').parentNode.replaceChild(share_mail, $('.share_fb'));
+  $('.share_fb').addEventListener("click", (e) => {
+    return; // todo later
+  });
+
+  let share_tw = newNode(
+    'button', 
+    ['share_tw'], 
+    '', 
+    $('.share_options div'), 
+    `<i class="fab fa-twitter fa-2x"></i>`
+  );
+  $('.share_tw').parentNode.replaceChild(share_mail, $('.share_tw'));
+  $('.share_tw').addEventListener("click", (e) => {
+    return; // todo later
+  });
+
+  let share_pin = newNode(
+    'button', 
+    ['share_pin'], 
+    '', 
+    $('.share_options div'), 
+    `<i class="fab fa-pinterest-p fa-2x"></i>`
+  );
+  $('.share_pin').parentNode.replaceChild(share_mail, $('.share_pin'));
+  $('.share_pin').addEventListener("click", (e) => {
+    return; // todo later
+  });
+}
+
+
+
+
+
+
+
+
+
 
 function renderPinnedTitle() {
   const title = newNode('div', ['pinned_quotes_title'], '', $('.quotes_wrapper'), 'My saved quotes:');
@@ -146,7 +234,7 @@ function setRemoveButton() {
 
     // restore pin_quote button
     if(currentQuote.id === id) {
-      $('#pin_quote').disabled = false; 
+      $('.pin').disabled = false; 
     }
     
     // remove quote object from pinnedQuotes array
@@ -183,88 +271,12 @@ function renderPinnedQuotes() {
   renderSharing();
 }
 
-function showSocial(quote, author) {
-  classTogglr('.share_options','share_hide','share_show'); 
 
-  let share_mail = newNode(
-    'button', 
-    [], 
-    'share_mail', 
-    $('.share_options div'), 
-    `<i class="far fa-envelope fa-2x"></i>`
-  );
-  $('#share_mail').parentNode.replaceChild(share_mail, $('#share_mail'));
-  $('#share_mail').addEventListener("click", (e) => {
-    return; // todo later
-  });
 
-  let share_wh = newNode(
-    'button', 
-    [], 
-    'share_wh', 
-    $('.share_options div'), 
-    `<i class="fab fa-whatsapp fa-2x"></i>`
-  );
-  $('#share_wh').parentNode.replaceChild(share_mail, $('#share_wh'));
-  $('#share_wh').addEventListener("click", (e) => {
-    return; // todo later
-  });
 
-  let share_fb = newNode(
-    'button', 
-    [], 
-    'share_fb', 
-    $('.share_options div'), 
-    `<i class="fab fa-facebook-f fa-2x"></i>`
-  );
-  $('#share_fb').parentNode.replaceChild(share_mail, $('#share_fb'));
-  $('#share_fb').addEventListener("click", (e) => {
-    return; // todo later
-  });
-
-  let share_tw = newNode(
-    'button', 
-    [], 
-    'share_tw', 
-    $('.share_options div'), 
-    `<i class="fab fa-twitter fa-2x"></i>`
-  );
-  $('#share_tw').parentNode.replaceChild(share_mail, $('#share_tw'));
-  $('#share_tw').addEventListener("click", (e) => {
-    return; // todo later
-  });
-
-  let share_pin = newNode(
-    'button', 
-    [], 
-    'share_pin', 
-    $('.share_options div'), 
-    `<i class="fab fa-pinterest-p fa-2x"></i>`
-  );
-  $('#share_pin').parentNode.replaceChild(share_mail, $('#share_pin'));
-  $('#share_pin').addEventListener("click", (e) => {
-    return; // todo later
-  });
-}
-
-function renderCurrentSharing() {
-  let button = newNode(
-    'button', 
-    ['share_current_quote'], 
-    '', 
-    $('#current_quote .buttons'), 
-    `<i class="fas fa-share-alt fa-sm"></i>`
-  );
-  $('.share_current_quote').parentNode.replaceChild(button, $('.share_current_quote'));
-  $('.share_current_quote').addEventListener("click", (e) => {
-    let quote = currentQuote.text;
-    let author = currentQuote.author;
-    showSocial(quote, author);
-  }) 
-}
 
 function renderSharing() {
-  $('.share_quote').addEventListener("click", (e) => {
+  $('.share').addEventListener("click", (e) => {
     const id = getCurrentId(e);
     const obj = pinnedQuotes.find(x => x.id === id);
     let quote = obj.text;
@@ -298,22 +310,23 @@ function init() {
 
 
   buildSpinner();
-   getQuote();
+  getQuote();
 
   $('.load').addEventListener("click", (event) => {
-    //$('#pin_quote').disabled = false;
+    $('.pin').disabled = false;
     toggleWaitingMode();
     getQuote();
   });
   
-  // $('#pin_quote').addEventListener("click", (event) => {
-  //   $('#pin_quote').disabled = true;
+  $('.close').addEventListener("click", (e) => {
+    classTogglr('.share_options','share_show','share_hide');
+  });
+
+  // $('.pin').addEventListener("click", (event) => {
+  //   $('.pin').disabled = true;
   //   renderPinnedQuotes();
   // });
 
-  // $('.close_window').addEventListener("click", (e) => {
-  //   classTogglr('.share_options','share_hide','share_show');
-  // });
 
   // window.addEventListener('scroll', function(){
   //    $('.mandala_bottom div').classList.add('scroll_animation');
