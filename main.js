@@ -123,7 +123,7 @@ function renderCurrentSharing() {
   }) 
 }
 
-function showSocial(quote, author) {
+function showSocial(quote, author) {  // to do later: remove boilerplate
   classTogglr('.share_options','share_hide','share_show'); 
 
   let share_mail = newNode(
@@ -187,17 +187,20 @@ function showSocial(quote, author) {
   });
 }
 
+function renderPinnedQuotes() {
+  if(currentQuote === {}) {
+    return;
+  }
+  else if(pinnedQuotes.length === 0) {
+    renderPinnedContainer();
+  }
+  pinCurrentQuote();
+  setRemoveButton();
+  renderSharing();
+}
 
-
-
-
-
-
-
-
-
-function renderPinnedTitle() {
-  const title = newNode('div', ['pinned_quotes_title'], '', $('.quotes_wrapper'), 'My saved quotes:');
+function renderPinnedContainer() {
+  classTogglr('.pinned_quotes','pinned_hide','pinned_show');
 }
 
 function pinCurrentQuote() {
@@ -208,27 +211,23 @@ function pinCurrentQuote() {
   // render on screen
   const quote_div = newNode(
     'div', 
-    ['single_quote_wrapper', 'pinned_add'], 
+    [], 
     currentQuote.id, 
-    '', 
-    `<div class="pinned_quote_bground">
-        <div class="quote">${currentQuote.text}</div>
-        <div class="author">${currentQuote.author}</div>
-      </div>
-      <div class="buttons pinned_buttons">
-        <button id="remove_${currentQuote.id}" class="remove_pin">
-          <i class="fas fa-times"></i>
-        </button>
-        <button id="share_${currentQuote.id}" class="share_quote">
-          <i class="fas fa-share-alt fa-sm"></i>
-        </button>
-      </div>
-      `);
-    $('.pinned_quotes_title').insertAdjacentElement('afterend', quote_div); 
+    $('.pinned_quotes'), 
+    `<div class="quote">${currentQuote.text}</div>
+    <div class="author">${currentQuote.author}</div>
+    <button id="remove_${currentQuote.id}" class="remove">
+        <i class="fas fa-times"></i>
+    </button>
+    <button id="share_${currentQuote.id}" class="share_pinned">
+        <i class="fas fa-share-alt fa-sm"></i>
+    </button>
+    `);
+    $('.pinned_quotes').prepend(quote_div);
 }
 
 function setRemoveButton() {
-  $('.remove_pin').addEventListener("click", (e) => {
+  $('.remove').addEventListener("click", (e) => {
     
     const id = getCurrentId(e);
 
@@ -244,12 +243,12 @@ function setRemoveButton() {
     syncLocalStorage();
     
     // remove card from screen
-    classTogglr('#' + id,'pinned_add','pinned_remove');
-    setTimeout(() => $('.quotes_wrapper').removeChild($('#' + id)), 350);
+    //classTogglr('#' + id,'pinned_add','pinned_remove'); // animation classes, to do later
+    setTimeout(() => $('.pinned_quotes').removeChild($('#' + id)), 0); //timeout for animation to play
     
-    //remove title if array is empty
+    //remove container if array is empty
     if(pinnedQuotes.length === 0) {
-      setTimeout(() => $('.quotes_wrapper').removeChild($('.pinned_quotes_title')), 300);
+      classTogglr('.pinned_quotes','pinned_hide','pinned_show');
     }
   })
 }
@@ -259,24 +258,8 @@ function getCurrentId(e) {
   return '_' +  id_arr[id_arr.length-1];
 }
 
-function renderPinnedQuotes() {
-  if(currentQuote === {}) {
-    return;
-  }
-  else if(pinnedQuotes.length === 0) {
-    renderPinnedTitle();
-  }
-  pinCurrentQuote();
-  setRemoveButton();
-  renderSharing();
-}
-
-
-
-
-
 function renderSharing() {
-  $('.share').addEventListener("click", (e) => {
+  $('.share_pinned').addEventListener("click", (e) => {
     const id = getCurrentId(e);
     const obj = pinnedQuotes.find(x => x.id === id);
     let quote = obj.text;
@@ -286,7 +269,7 @@ function renderSharing() {
 }
 
 function syncLocalStorage() {
-  return;
+  return; // to do later
 }
 
 function toggleTheme() {
@@ -307,8 +290,6 @@ function init() {
   // load items from local storage and push them to pinnedQuotes array 
   // also display them on screen
 
-
-
   buildSpinner();
   getQuote();
 
@@ -322,10 +303,10 @@ function init() {
     classTogglr('.share_options','share_show','share_hide');
   });
 
-  // $('.pin').addEventListener("click", (event) => {
-  //   $('.pin').disabled = true;
-  //   renderPinnedQuotes();
-  // });
+  $('.pin').addEventListener("click", (event) => {
+    $('.pin').disabled = true;
+    renderPinnedQuotes();
+  });
 
 
   // window.addEventListener('scroll', function(){

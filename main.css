@@ -133,7 +133,6 @@ button:disabled
     overflow-y: hidden; 
     padding-bottom: 3rem;
     -webkit-overflow-scrolling: touch;
-    /* display: none; */
 }
 
 -webkit-scrollbar {
@@ -231,7 +230,7 @@ button:disabled
     transition: font-size 100ms ease-in;
 }
 
-.share_options div .close:focus
+.share_options div .close:active
 {
     margin: 0;
     font-size: 1.2rem;
@@ -311,7 +310,8 @@ button:disabled
     display: block;
 }
 
-.share_show
+.share_show,
+.pinned_show
 {
     display: flex;
     animation: fadein 650ms cubic-bezier(.75,.25,.63,.95);
@@ -319,7 +319,8 @@ button:disabled
 
 .spinner_hide,
 .quote_hide,
-.share_hide
+.share_hide,
+.pinned_hide
 {
     display: none;
 }
@@ -410,13 +411,28 @@ button:disabled
         flex-flow: row;
         width: 60%;
         max-width: 550px;
-        top:-3rem;
+    }
+
+    .share_options div button
+    {
+        margin: 0.2rem;
+    }
+
+    .share_options div button:active
+    { 
+        margin: 0 0.2rem 0.4rem 0.2rem;
+    }
+
+    .share_options div .close:active
+    {
+        margin: 0;
+        font-size: 1.2rem;
     }
 
     .spinner div
     {
         visibility: hidden;
-        /* todo later: fix the spinner position at landscape on mobile */
+        /* to do later: fix the spinner position at landscape on mobile */
     }
 
     .spinner div > div
@@ -427,7 +443,7 @@ button:disabled
 
 @media screen and (min-width: 800px) 
 {    
-    /* todo later: add bground image on web only */
+    /* to do later: add bground image on web only */
     
     .menu
     {
@@ -449,14 +465,31 @@ button:disabled
         font-size: 1rem;
     } 
 
-    .share_options div button
+    .share_options div
+    {
+        top:-3rem;
+    }
+
+    .share_options div button:active
     {
         margin: 0.2rem;
     }
-    
+
     .share_options div button:hover
     { 
         margin: 0 0.2rem 0.4rem 0.2rem;
+    }
+
+    .share_options div .close:active
+    {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .share_options div .close:hover
+    {
+        margin: 0;
+        font-size: 1.2rem;
     }
 
     spinner div
