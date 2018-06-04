@@ -477,12 +477,12 @@ button:disabled
 {    
     .current_quote
     {
-        min-height: 600px;
+        min-height: 450px;
     }
 
     .menu
     {
-        min-height: 600px;
+        min-height: 450px;
     }
     
     .share_options div button:active
