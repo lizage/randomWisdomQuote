@@ -397,7 +397,7 @@ button:focus
     .spinner div
     {
         visibility: hidden;
-        bottom:9rem;
+        top:1rem;
     }
 
     .spinner div > div
