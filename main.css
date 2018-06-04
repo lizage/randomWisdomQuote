@@ -400,7 +400,7 @@ button:disabled
     .current_quote
     {
         flex-basis: 80%;
-        height: 100vh;
+        height: 90vh;
         flex-grow: 1;
         justify-content: flex-start;
         order:1;
@@ -418,7 +418,7 @@ button:disabled
     {
         flex-basis: 20%;
         flex-flow: column;
-        height: 100vh;
+        height: 90vh;
         padding: 0;
         margin: 0;
         top: 0;
@@ -477,12 +477,12 @@ button:disabled
 {    
     .current_quote
     {
-        min-height: 450px;
+        min-height: 45vh;
     }
 
     .menu
     {
-        min-height: 450px;
+        min-height: 45vh;
     }
     
     .share_options div button:active
