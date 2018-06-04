@@ -417,6 +417,7 @@ button:disabled
     .menu
     {
         flex-basis: 20%;
+        align-self: stretch;
         flex-flow: column;
         min-height: 90vh;
         padding: 0;
