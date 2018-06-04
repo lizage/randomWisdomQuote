@@ -51,7 +51,6 @@ button:disabled
     color:#999999;
     background-color: transparent;
     border: none;
-    border: solid 1px #999999;
 }
 
 .current_quote
@@ -70,7 +69,7 @@ button:disabled
     max-width: 950px;
     font-size:1.1rem;
     padding: 2rem 2rem 3rem 2rem;
-    animation: slideFromTop 600ms cubic-bezier(.05,.62,.52,1.23);
+    animation: slideFromTop 600ms cubic-bezier(.05,.62,.52,1.23); 
 }
 
 .current_quote .author
@@ -389,9 +388,22 @@ button:disabled
 
 @media screen and (orientation:landscape) 
 { 
+    body 
+    {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        
+    }
+    
     .current_quote
     {
-        min-height: 100vh;
+        flex-basis: 80%;
+        min-height: 45vh;
+        flex-grow: 1;
+        justify-content: flex-start;
+        order:1;
     }
 
     .quote_wrapper
@@ -399,11 +411,33 @@ button:disabled
         width: 100%;
         animation: fadein 650ms cubic-bezier(.75,.25,.63,.95);
         font-size: 0.8rem;
+        order:1;
     }
 
     .menu
     {
-        top:-6rem;
+        flex-basis: 20%;
+        flex-flow: column;
+        min-height: 45vh;
+        background-color: #0c2d69; /* move to theme css */
+        padding: 0;
+        margin: 0;
+        top: 0;
+        flex-grow: 0;
+        order:0;
+        justify-content: space-between;
+    }
+
+    .menu button
+    {
+        top:1.5rem;
+        position: relative;
+    }
+
+    .pinned_quotes
+    {
+       flex-basis: 100%;
+       order:1;
     }
 
     .share_options div
@@ -432,44 +466,16 @@ button:disabled
     .spinner div
     {
         visibility: hidden;
-        /* to do later: fix the spinner position at landscape on mobile */
     }
 
     .spinner div > div
     {
         visibility: visible;
-    }
+    }  
 }
 
-@media screen and (min-width: 800px) 
+@media screen and (orientation:landscape) and (min-width: 800px) 
 {    
-    /* to do later: add bground image on web only */
-    
-    .menu
-    {
-        padding: 0 30% 0 30%; 
-        top:-1rem;
-    }
-
-    .current_quote
-    {
-        margin-top: 1rem;
-        min-height: 38vh;
-    }
-
-    .quote_wrapper
-    {
-        width: 950px;
-        border-radius: 0.2rem;
-        min-height: 38vh;  
-        font-size: 1rem;
-    } 
-
-    .share_options div
-    {
-        top:-3rem;
-    }
-
     .share_options div button:active
     {
         margin: 0.2rem;
@@ -490,12 +496,7 @@ button:disabled
     {
         margin: 0;
         font-size: 1.2rem;
-    }
-
-    spinner div
-    {
-        top:50%;
-    }
+    }   
 }
 
 

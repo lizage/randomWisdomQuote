@@ -31,6 +31,29 @@ body
     box-shadow: 2px 2px 0 1px rgba(12,45,105,1);
 }
 
+@media screen and (orientation:landscape)
+{
+    .current_quote
+    {
+        background-color: #0c2d69; 
+    }
+
+    .quote_wrapper
+    {
+        background-color: transparent; 
+    }
+
+    .menu
+    {  
+        background-color: #0c2d69; 
+    }
+    
+    .spinner div > div
+    {
+        box-shadow: 2px 2px 0 1px rgba(255,255,255,1);
+    }
+}
+
 
 
 
