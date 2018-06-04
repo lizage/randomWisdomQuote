@@ -376,6 +376,14 @@ button:focus
     }
 }
 
+@media screen and (orientation:landscape) 
+{ 
+    .current_quote
+    {
+        min-height: 38vh;
+    }
+}
+
 @media screen and (min-width: 800px) 
 {
     .menu
@@ -392,6 +400,7 @@ button:focus
     {
         width: 950px;
         border-radius: 0.2rem;
+        min-height: 38vh;
         animation: renderQuoteWide 650ms cubic-bezier(.75,.25,.63,.95);
     } 
 
@@ -424,13 +433,7 @@ button:focus
     }
 }
 
-@media screen and (orientation:landscape) 
-{ 
-    .current_quote
-    {
-        min-height: 38vh;
-    }
-}
+
 
 
 
