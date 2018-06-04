@@ -26,6 +26,7 @@ button
     color:#0c2d69;
 }
 
+button:active,
 button:hover
 {
     font-size: 1.2rem;
