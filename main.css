@@ -386,16 +386,18 @@ button:focus
     {
         width: 100%;
         animation: renderQuoteWide 650ms cubic-bezier(.75,.25,.63,.95);
+        font-size: 0.8rem;
     }
 
     .menu
     {
-        top:-4.5rem;
+        top:-5rem;
     }
 
     .spinner div
     {
         visibility: hidden;
+        top:40%;
     }
 
     .spinner div > div
@@ -421,6 +423,7 @@ button:focus
         width: 950px;
         border-radius: 0.2rem;
         min-height: 38vh;  
+        font-size: 1rem;
     } 
 
     .share_options div
@@ -439,6 +442,11 @@ button:focus
     .share_options div button:hover
     { 
         margin: 0 0.2rem 0.4rem 0.2rem;
+    }
+
+    spinner div
+    {
+        top:50%;
     }
 }
 
