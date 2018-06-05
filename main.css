@@ -188,7 +188,6 @@ button:disabled
     display: flex;
     align-items: center;
     justify-content: center; 
-    animation: fadeout 650ms cubic-bezier(.75,.25,.63,.95);
 }
 
 .share_options div
@@ -309,11 +308,20 @@ button:disabled
     display: block;
 }
 
-.share_show,
-.pinned_show
+.share_show
 {
     display: flex;
     animation: fadein 650ms cubic-bezier(.75,.25,.63,.95);
+}
+
+.pinned_add
+{
+    animation: slideToPin 400ms cubic-bezier(.15,.74,.81,.51);
+}
+
+.pinned_remove
+{
+    animation: removeFromPin 400ms cubic-bezier(.15,.74,.81,.51);
 }
 
 .spinner_hide,
@@ -383,6 +391,38 @@ button:disabled
     to
     {
         transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes slideToPin
+{
+    0%
+    {
+        transform: translate3d(30%, -20%, 0);
+    }
+    60%
+    {
+        transform: translate3d(0, 10%, 0);
+    }
+    100%
+    {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes removeFromPin
+{
+    0%
+    {
+        transform: translate3d(0, 0, 0);
+    }
+    40%
+    {
+        transform: translate3d(0, 10%, 0);
+    }
+    100%
+    {
+        transform: translate3d(30%, -20%, 0);
     }
 }
 

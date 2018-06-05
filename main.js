@@ -213,7 +213,7 @@ function pinCurrentQuote() {
   // render on screen
   const quote_div = newNode(
     'div', 
-    [], 
+    ['pinned_add'], 
     currentQuote.id, 
     $('.pinned_quotes'), 
     `<div class="quote">${currentQuote.text}</div>
@@ -245,8 +245,8 @@ function setRemoveButton() {
     syncLocalStorage();
     
     // remove card from screen
-    //classTogglr('#' + id,'pinned_add','pinned_remove'); // animation classes, to do later
-    setTimeout(() => $('.pinned_quotes').removeChild($('#' + id)), 0); //timeout for animation to play
+    classTogglr('#' + id,'pinned_add','pinned_remove'); 
+    setTimeout(() => $('.pinned_quotes').removeChild($('#' + id)), 400); 
     
     //remove container if array is empty
     if(pinnedQuotes.length === 0) {
