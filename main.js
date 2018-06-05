@@ -51,6 +51,8 @@ function randomFixedInteger(length) {
 function toggleWaitingMode() {
   classTogglr('.quote_wrapper','quote_show','quote_hide');
   classTogglr('.spinner','spinner_hide','spinner_show');
+  $('.pin').disabled = ($('.pin').disabled === false) ? true : false;
+  $('.share').disabled = ($('.share').disabled === false) ? true : false;
 }
 
 function classTogglr(target,class1,class2)
@@ -290,6 +292,8 @@ function init() {
   // load items from local storage and push them to pinnedQuotes array 
   // also display them on screen
 
+  $('.pin').disabled = true;
+  $('.share').disabled = true;
   buildSpinner();
   getQuote();
 
@@ -308,17 +312,9 @@ function init() {
     renderPinnedQuotes();
   });
 
-
-  // window.addEventListener('scroll', function(){
-  //    $('.mandala_bottom div').classList.add('scroll_animation');
-  //    setTimeout(() => {
-  //     $('.mandala_bottom div').classList.remove('scroll_animation');
-  //    }, 2500)
-  // });
-
-  // $('#toggle_theme').addEventListener("click", (e) => {
-  //   toggleTheme();
-  // });
+  $('.theme').addEventListener("click", (e) => {
+    toggleTheme();
+  });
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {

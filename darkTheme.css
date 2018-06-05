@@ -1,21 +1,79 @@
+
 body
 {
     color:#0c2d69;
-    background-color: #c3d4f0;
-}
-
-.menu button
-{
-    box-shadow: 0px 0px 4px 1px rgba(143,155,175,0.5);
-    border:none;
     background-color: white;
 }
 
-.current_quote
+
+button
 {
-    border-radius: 0.2rem;
-    background-color: white;
-    margin: 0.5rem;
-    box-shadow: 0px 0px 4px 1px rgba(143,155,175,0.5);
-    width: calc(100% - 1.6rem);
+    color:#0c2d69;
 }
+
+.quote_wrapper
+{
+    background-color: #0c2d69;
+    color: white;
+}
+
+.share_options
+{
+    background: rgba(12,45,105,0.8);
+}
+
+.share_options div
+{
+    background-color: white;
+}
+
+.share_options div .close
+{
+    background-color:white;
+}
+
+.spinner div > div
+{
+    box-shadow: 2px 2px 0 1px rgba(12,45,105,1);
+}
+
+@media screen and (min-width: 800px) 
+{
+    .current_quote
+    {
+        background-color: #0c2d69;
+    }
+
+    .quote_wrapper
+    {
+        background-color: transparent; 
+    }
+
+    .menu
+    {  
+        background-color: #0c2d69; 
+    }
+    
+    .spinner div > div
+    {
+        box-shadow: 2px 2px 0 1px rgba(255,255,255,1);
+    }
+}
+
+@media screen and (orientation:landscape) and (min-width: 1000px) 
+{
+    .current_quote
+    {
+       background-attachment: fixed;
+       background: linear-gradient(
+            to right,
+            rgba(12,45,105, 1),
+            rgba(255,255,255, 0)
+          ),url(img/dark_bground.jpg);
+    }
+}
+
+
+
+
+

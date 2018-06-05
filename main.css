@@ -23,7 +23,6 @@ button
     border: none;
     cursor: pointer;
     transition: font-size 150ms ease;
-    color:#0c2d69;
 }
 
 button:active
@@ -61,6 +60,7 @@ button:disabled
     display: flex;
     justify-content: space-around;
     padding: 0;
+    flex-basis: 100%;
 }
 
 .quote_wrapper
@@ -430,6 +430,7 @@ button:disabled
         flex-grow: 1;
         justify-content: flex-start;
         order:1;
+
     }
 
     .quote_wrapper
@@ -477,6 +478,11 @@ button:disabled
     {
         visibility: visible;
     }  
+
+    .share_options div
+    {
+        min-width: 460px;
+    }
    
     .share_options div button:active
     {

@@ -1,24 +1,50 @@
 
 body
 {
-    color:#0c2d69;
-    background-color: white;
+    color:#514514;
+    background-image:url(img/desert_bground);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+button
+{
+    color:#514514;
+    border:none;
+    box-shadow: 0px 0px 12px 1px rgba(167,131,100,0.6);
+}
+
+.menu button
+{
+    border:none;
 }
 
 .quote_wrapper
 {
-    background-color: #0c2d69;
-    color: white;
+    background-color: white;
+    color:#514514;
+}
+
+.pinned_quotes button,
+.share_options button
+{
+    border: none;
+    box-shadow: none;
+    background: transparent;
 }
 
 .share_options
 {
-    background: rgba(12,45,105,0.8);
+    background: rgba(167,131,100,0.5);
 }
 
 .share_options div
 {
     background-color: white;
+    box-shadow: 0px 0px 12px 1px rgba(167,131,100,0.6);
 }
 
 .share_options div .close
@@ -28,14 +54,14 @@ body
 
 .spinner div > div
 {
-    box-shadow: 2px 2px 0 1px rgba(12,45,105,1);
+    box-shadow: 2px 2px 0 1px rgba(81,69,20,1);
 }
 
 @media screen and (min-width: 800px) 
 {
     .current_quote
     {
-        background-color: #0c2d69;
+        background-color: white;
     }
 
     .quote_wrapper
@@ -45,7 +71,7 @@ body
 
     .menu
     {  
-        background-color: #0c2d69; 
+        background-color: white;
     }
     
     .spinner div > div
@@ -61,9 +87,9 @@ body
        background-attachment: fixed;
        background: linear-gradient(
             to right,
-            rgba(12,45,105, 1),
+            rgba(255,255,255, 1),
             rgba(255,255,255, 0)
-          ),url(img/dark_bground.jpg);
+          );
     }
 }
 
