@@ -31,7 +31,7 @@ body
     box-shadow: 2px 2px 0 1px rgba(12,45,105,1);
 }
 
-@media screen and (orientation:landscape)
+@media screen and (min-width: 600px) 
 {
     .current_quote
     {
@@ -54,7 +54,7 @@ body
     }
 }
 
-@media screen and (orientation:landscape) and (min-width: 600px) 
+@media screen and (orientation:landscape) and (min-width: 1000px) 
 {
     .current_quote
     {

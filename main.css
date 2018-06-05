@@ -386,7 +386,7 @@ button:disabled
     }
 }
 
-@media screen and (orientation:landscape) 
+@media screen and (min-width: 600px) 
 { 
     body 
     {
@@ -400,7 +400,7 @@ button:disabled
     .current_quote
     {
         flex-basis: 80%;
-        min-height: 90vh;
+        min-height: 42vh;
         flex-grow: 1;
         justify-content: flex-start;
         order:1;
@@ -416,30 +416,24 @@ button:disabled
 
     .menu
     {
-        flex-basis: 20%;
-        align-self: stretch;
-        flex-flow: column;
-        min-height: 90vh;
-        padding: 0;
-        margin: 0;
-        top: 0;
-        flex-grow: 0;
-        order:0;
-        justify-content: space-between;
+            flex-basis: 20%;
+            flex-flow: column;
+            height: auto;
+            min-height: 42vh;
+            padding: 0;
+            margin: 0;
+            top: 0;
+            flex-grow: 0;
+            order:0;
+            justify-content: space-between;
     }
 
     .menu button
     {
-        top:1.5rem;
         position: relative;
+        top:1.5rem;
     }
 
-    .menu button + button + button + button
-    {
-        position: relative;
-        top:-2rem;
-        left: 3.5rem;
-    }
 
     .pinned_quotes
     {
@@ -482,7 +476,7 @@ button:disabled
     }  
 }
 
-@media screen and (orientation:landscape) and (min-width: 600px) 
+/* @media screen and (orientation:landscape) and (min-width: 800px) 
 {    
     .current_quote
     {
@@ -521,7 +515,7 @@ button:disabled
         margin: 0;
         font-size: 1.2rem;
     }   
-}
+} */
 
 
 
