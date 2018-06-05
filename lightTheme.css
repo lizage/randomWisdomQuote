@@ -2,12 +2,7 @@
 body
 {
     color:#514514;
-    background-image:url(img/desert_bground);
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
+    background-color: #f1e9de;
 }
 
 button
@@ -82,6 +77,15 @@ button
 
 @media screen and (orientation:landscape) and (min-width: 1000px) 
 {
+    body
+    {
+        background-image:url(img/desert_bground);
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
     .current_quote
     {
        background-attachment: fixed;
