@@ -35,7 +35,7 @@ body
 {
     .current_quote
     {
-        background-color: #0c2d69; 
+        background-color: #0c2d69;
     }
 
     .quote_wrapper
@@ -51,6 +51,19 @@ body
     .spinner div > div
     {
         box-shadow: 2px 2px 0 1px rgba(255,255,255,1);
+    }
+}
+
+@media screen and (orientation:landscape) and (min-width: 600px) 
+{
+    .current_quote
+    {
+       background-attachment: fixed;
+       background: linear-gradient(
+            to right,
+            rgba(12,45,105, 1),
+            rgba(255,255,255, 0)
+          ),url(img/dark_bground.jpg);
     }
 }
 

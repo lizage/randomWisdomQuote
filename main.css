@@ -482,7 +482,7 @@ button:disabled
     }  
 }
 
-@media screen and (orientation:landscape) and (min-width: 800px) 
+@media screen and (orientation:landscape) and (min-width: 600px) 
 {    
     .current_quote
     {
