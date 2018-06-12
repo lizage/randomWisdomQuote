@@ -238,11 +238,12 @@ button:disabled
 
 .spinner
 {
-    position: absolute;
     width: 50%;
     height: 50%;
-    top: 20%;
-    right: 25%;
+    top:20%;
+    transform: translate(-50%, -50%);
+    
+    position: absolute;
     z-index: 1;
     animation: spinner 20s linear infinite;
     display: none;
@@ -495,6 +496,15 @@ button:disabled
        flex-basis: 100%;
        order:1;
        margin-top: 1rem;
+    }
+
+    .spinner
+    {
+        width: 40%;
+        height: 40%;
+        top: 20%;
+        right: 40%;
+        transform: translate(-40%, -40%);
     }
 
     .spinner div
